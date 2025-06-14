@@ -1,0 +1,82 @@
+<aside
+   id="logo-sidebar"
+   class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform translate-x-0 bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+   aria-label="Sidebar"
+   [ngClass]="{'translate-x-0': openSidebar, '-translate-x-full': !openSidebar}"
+>
+   <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+      <ul class="space-y-2 font-medium">
+            @for (item of menuItems; track $index) {
+               @if (item.type === 'link' && isBrowser) {
+                  <li ngSkipHydration class="relative group">
+                     <a 
+                        [routerLink]="item.state" 
+                        (click)="menuDisabled(item.name? item.name : '')"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                        [ngClass]="{'bg-gray-100 dark:bg-gray-500': item.disabled }"
+                     >
+                        @if(item.icon){
+                           <mat-icon [ngStyle]="{'width': item.fontSize? item.fontSize: '20px'}">{{ item.icon }}</mat-icon>
+                        }
+                        <span class="ms-3 relative">
+                           {{ item.name | transloco }}
+                     
+                           @if(item?.tooltip){
+                              <span
+                                 class="absolute top-0 left-full ml-2 whitespace-nowrap z-50 hidden group-hover:inline-block px-3 py-1 text-xs font-medium text-white bg-gray-900 rounded-lg shadow dark:bg-gray-700"
+                              >
+                                 {{ item?.tooltip}}
+                              </span>
+                           }
+                           
+                        </span>
+                     </a>
+                  </li>
+               }
+               @if (item.type === 'dropDown' && isBrowser) {
+                  <li ngSkipHydration>
+                     <button 
+                        (click)="menuDisabled(item.name? item.name : '')"
+                        [ngClass]="{'bg-gray-100 dark:bg-gray-500': item.disabled }"
+                        type="button" 
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" 
+                        aria-controls="dropdown-example" 
+                        data-collapse-toggle="dropdown-example">
+                        <mat-icon [ngStyle]="{'width': item.fontSize? item.fontSize: '20px'}">{{ item.icon }}</mat-icon>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">{{ item.name | transloco }}</span>
+                        
+                        @if(!item.disabled){
+                           <mat-icon>keyboard_arrow_right</mat-icon>  
+                        } @else {
+                           <mat-icon>keyboard_arrow_down</mat-icon>
+                        }
+
+                     </button>
+                     <ul
+                        id="dropdown-example" 
+                        class="py-2 space-y-2"
+                        [ngClass]="{'hidden': !item.disabled}"
+                     >
+
+                        @for (subItem of item.sub; track $index) {
+                           @if (subItem.type === 'link' && isBrowser) {
+                              <li>
+                                 <a 
+                                    href="#" 
+                                    [routerLink]="subItem.state"
+                                    (click)="subMenuDisabled(item.name? item.name : '', subItem.name? subItem.name : '')"
+                                    [ngClass]="{'bg-gray-100 dark:bg-gray-500': subItem.disabled }"
+                                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                 >
+                                    {{ subItem.name | transloco }}
+                                 </a>
+                              </li>
+                           }
+                        }
+                     </ul>
+               </li>
+               }
+            }
+      </ul>
+   </div>
+</aside>

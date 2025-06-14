@@ -1,0 +1,137 @@
+@if (loading()) {
+    <app-product-one-placeholder-view></app-product-one-placeholder-view>
+} @else {
+    <div class="w-full h-auto p-10">
+        <app-breadcrumb class="p-4"></app-breadcrumb>
+        <div class="w-full grid grid-cols-1 gap-1 md:grid-cols-2">
+            <div class="col-span-1">
+                <div class="w-full h-auto p-4">
+                    <img
+                        class="w-full h-auto rounded-2xl"
+                        src="{{ imagePreview() }}"
+                        alt="imagen-firts"
+                        loading="lazy"
+                    >
+                </div>
+                <div 
+                class="-full grid gap-8"
+                [ngClass]="{ 'grid-cols-1': product().images.length === 1, 'grid-cols-2': product().images.length === 2, 'grid-cols-3': product().images.length === 3, 'grid-cols-4': product().images.length > 3}"
+                >
+                    @for (image of product().images; track $index) {
+                        <div class="col-span-1">
+                            <div class="w-full h-auto p-4">
+                                <button 
+                                    (click)="changeImagePreview(image.url)"
+                                    class="w-full h-auto rounded-2xl"
+                                >
+                                    <img  class="w-full h-auto rounded-2xl" src="{{ image.url }}" alt="imagen-firts" loading="lazy">
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-span-1">
+                <div class="w-full h-auto p-4">
+                    <div class="w-full flex justify-between items-center">
+                        <span class="text-2xl font-bold text-gray-700 dark:text-white" >{{ product().name }}</span>
+                        <span class="text-2xl font-bold text-gray-700 dark:text-white">{{ product().price | currency }}</span>
+                    </div>
+                    
+                    <app-rating [review]="product().review || []" ></app-rating>
+
+                    <div class="w-full block justify-start items-center mt-2">
+                        <span class="text-sm font-normal text-gray-700 dark:text-white" >Color</span>
+                        <div class="w-full flex justify-start items-center gap-2 mt-2">
+                            <div class="bg-black rounded-4xl w-8 h-8"></div>
+                            <div class="bg-blue-600 rounded-4xl w-8 h-8"></div>
+                        </div>
+                    </div>
+                    <div class="w-full block justify-start items-center mt-2">
+                        <span class="text-sm font-normal text-gray-700 dark:text-white">Size</span>
+                        <div class="w-full flex justify-start items-center gap-2 mt-2">
+                            <ul class="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+                                <li class="col-span-1">
+                                    <input type="radio" id="hosting-XXS" name="hosting" value="hosting-XXS" class="hidden peer" required />
+                                    <label for="hosting-XXS" class="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 dark:peer-checked:border-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                                        <div class="w-full text-center">
+                                            <div class="w-full text-lg font-semibold">XXS</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li class="col-span-1">
+                                    <input type="radio" id="hosting-XS" name="hosting" value="hosting-XS" class="hidden peer">
+                                    <label for="hosting-XS" class="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 dark:peer-checked:border-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="w-full text-center">
+                                            <div class="w-full text-lg font-bold">XS</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li class="col-span-1">
+                                    <input type="radio" id="hosting-S" name="hosting" value="hosting-S" class="hidden peer">
+                                    <label for="hosting-S" class="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 dark:peer-checked:border-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="w-full text-center">
+                                            <div class="w-full text-lg font-bold">S</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li class="col-span-1">
+                                    <input type="radio" id="hosting-M" name="hosting" value="hosting-M" class="hidden peer">
+                                    <label for="hosting-M" class="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 dark:peer-checked:border-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="w-full text-center">
+                                            <div class="w-full text-lg font-bold">M</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li class="col-span-1">
+                                    <input type="radio" id="hosting-L" name="hosting" value="hosting-L" class="hidden peer">
+                                    <label for="hosting-L" class="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 dark:peer-checked:border-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="w-full text-center">
+                                            <div class="w-full text-lg font-bold">L</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li class="col-span-1">
+                                    <input type="radio" id="hosting-XL" name="hosting" value="hosting-XL" class="hidden peer">
+                                    <label for="hosting-XL" class="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 dark:peer-checked:border-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="w-full text-center">
+                                            <div class="w-full text-lg font-bold">XL</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="w-full py-6">
+                        <button type="button" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-4 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{{ 'products.ADD_CAR' | transloco }}</button>
+                    </div>
+                    <div class="w-full">
+                        <span class="block text-sm font-normal text-gray-700 dark:text-white">{{ 'products.DESCRIPTION' | transloco}}</span>
+                        <span class="block text-sm font-normal text-gray-500 dark:text-gray-400 mt-2">
+                            {{ product().description || '' }}
+                        </span>
+                    </div>
+                    <div class="w-full h-0.5 bg-gray-300 my-8"></div>
+                    <div class="w-full mt-2">
+                        <span class="block text-sm font-normal text-gray-700 dark:text-white">Fabric & Care</span>
+                        <ul class="max-w-md space-y-1 text-sm font-light text-gray-500 list-disc list-inside dark:text-gray-400 mt-4">
+                            <li>
+                                Only the best materials
+                            </li>
+                            <li>
+                                Ethically and locally made
+                            </li>
+                            <li>
+                                Pre-washed and pre-shrunk
+                            </li>
+                            <li>
+                                Machine wash cold with similar colors
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<app-viewbefore-recommendations-products></app-viewbefore-recommendations-products>

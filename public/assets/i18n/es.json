@@ -1,0 +1,115 @@
+{
+    "HELLO": "Hola",
+    "WELCOME": "Bienvenido a Gestify",
+    "sidebar": {
+        "HOME": "Inicio",
+        "DASHBOARD": "Tablero",
+        "PRODUCTS": "Productos",
+        "PRODUCTS_LIST": "Lista de productos",
+        "categories": {
+            "CATEGORIES": "Categorías",
+            "FURNITURE": "Muebles",
+            "CLOTHING": "Ropa",
+            "ELECTRONICS": "Electrónica"
+        }
+    },
+    "language": {
+        "LANGUAGE": "Idioma",
+        "ENGLISH": "Inglés",
+        "SPANISH": "Español"
+    },
+    "configuration": {
+        "CONFIGURATION": "Configuración",
+        "DARK_MODE": "Modo oscuro",
+        "THEME": "Tema",
+        "LIGHT_MODE": "Claro",
+        "SIGN_OUT": "Cerrar sesión",
+        "SIGN_IN": "Iniciar sesión",
+        "SIGN_UP": "Registrarse"
+    },
+    "user": {
+        "USER": "Usuario",
+        "PROFILE": "Perfil",
+        "EDIT_PROFILE": "Editar perfil",
+        "CHANGE_PASSWORD": "Cambiar contraseña",
+        "NAME": "Nombre",
+        "LAST_NAME": "Apellido",
+        "EMAIL": "Correo electrónico",
+        "PASSWORD": "Contraseña",
+        "CONFIRM_PASSWORD": "Confirmar contraseña",
+        "SAVE": "Guardar",
+        "CANCEL": "Cancelar"
+    },
+    "products": {
+        "PRODUCTS": "Productos",
+        "PRODUCTS_LIST": "Lista de Productos",
+        "BY": "por",
+        "ADD_PRODUCT": "Agregar Producto",
+        "EDIT_PRODUCT": "Editar Producto",
+        "DELETE_PRODUCT": "Eliminar Producto",
+        "NAME": "Nombre",
+        "DESCRIPTION": "Descripción",
+        "PRICE": "Precio",
+        "IMAGE": "Imagen",
+        "ADD_CAR": "Agregar al Carrito",
+        "CAR": "Carrito",
+        "CAR_LIST": "Lista de Carrito",
+        "TOTAL": "Total",
+        "CHECKOUT": "Realizar Pago",
+        "PAYMENT": "Pago",
+        "PAYMENT_LIST": "Lista de Pagos",
+        "DATE": "Fecha",
+        "STATUS": "Estado",
+        "PENDING": "Pendiente",
+        "PAID": "Pagado",
+        "CANCELLED": "Cancelado",
+        "COMPLETED": "Completado",
+        "REVIEW_PRODUCT": "Ver todas las reseñas",
+        "categories": {
+            "CATEGORIES": "Categorías",
+            "CATEGORIES_LIST": "Lista de Categorías",
+            "ADD_CATEGORY": "Agregar Categoría",
+            "EDIT_CATEGORY": "Editar Categoría",
+            "DELETE_CATEGORY": "Eliminar Categoría",
+            "NAME": "Nombre",
+            "DESCRIPTION": "Descripción"
+        },
+        "VIEWED_PRODUCTS": "Productos vistos recientemente",
+        "VIEWED_PRODUCTS_LIST": "Lista de Productos Vistos Recientemente"
+},
+"ecommerce": {
+    "ECOMMERCE": "Comercio Electrónico"
+},
+"404":{
+    "PAGE_NOT_FOUND": "Página no encontrada",
+    "APOLOGIES": "Lo sentimos, no pudimos encontrar la página que estas buscando.",
+    "BACK_TO_HOME": "Volver a inicio"
+},
+"pagination": {
+    "PREVIOUS": "Anterior",
+    "NEXT": "Siguiente"
+},
+"errors": {
+    "REQUIRED": "Este campo es obligatorio",
+    "MIN_LENGTH": "Este campo debe tener al menos {{minLength}} caracteres",
+    "MAX_LENGTH": "Este campo debe tener como máximo {{maxLength}} caracteres",
+    "EMAIL": "Este campo debe ser un correo electrónico válido",
+    "PASSWORD": "La contraseña debe tener al menos 8 caracteres, una mayúscula y un número",
+    "CONFIRM_PASSWORD": "Las contraseñas no coinciden",
+    "USER_EXISTS": "Este usuario ya existe",
+    "USER_NOT_FOUND": "Este usuario no existe",
+    "PASSWORD_INCORRECT": "La contraseña es incorrecta",
+    "CATEGORY_EXISTS": "Esta categoría ya existe",
+    "CATEGORY_NOT_FOUND": "Esta categoría no existe",
+    "PRODUCT_EXISTS": "Este producto ya existe",
+    "PRODUCT_NOT_FOUND": "Este producto no existe",
+    "CAR_EXISTS": "Este producto ya existe en el carrito",
+    "CAR_NOT_FOUND": "Este producto no existe en el carrito",
+    "PAYMENT_EXISTS": "Este pago ya existe",
+    "PAYMENT_NOT_FOUND": "Este pago no existe",
+    "REVIEW_EXISTS": "Esta reseña ya existe",
+    "REVIEW_NOT_FOUND": "Esta reseña no existe",
+    "REVIEW_USER_EXISTS": "Esta reseña ya existe para este producto",
+    "REVIEW_USER_NOT_FOUND": "Esta reseña no existe para este producto"
+}
+}

@@ -1,0 +1,115 @@
+{
+    "HELLO": "Hello",
+    "WELCOME": "Welcome Gestify",
+    "sidebar": {
+        "DASHBOARD": "Dashboard",
+        "HOME": "Home",
+        "PRODUCTS": "Products",
+        "PRODUCTS_LIST": "Products List",
+        "categories": {
+            "CATEGORIES": "Categories",
+            "FURNITURE": "Furniture",
+            "CLOTHING": "Clothing",
+            "ELECTRONICS": "Electronics"
+        }
+    },
+    "language": {
+        "LANGUAGE": "Language",
+        "ENGLISH": "English",
+        "SPANISH": "Spanish"
+    },
+    "configuration": {
+        "CONFIGURATION": "Settings",
+        "DARK_MODE": "Dark Mode",
+        "THEME": "Theme",
+        "LIGHT_MODE": "Light",
+        "SIGN_OUT": "Sign Out",
+        "SIGN_IN": "Sign In",
+        "SIGN_UP": "Sign Up"
+    },
+    "user": {
+        "USER": "User",
+        "PROFILE": "Profile",
+        "EDIT_PROFILE": "Edit Profile",
+        "CHANGE_PASSWORD": "Change Password",
+        "NAME": "Name",
+        "LASTNAME": "Lastname",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "CONFIRM_PASSWORD": "Confirm Password",
+        "SAVE": "Save",
+        "CANCEL": "Cancel"
+    },
+    "products": {
+        "PRODUCTS": "Products",
+        "PRODUCTS_LIST": "Products List",
+        "BY": "by",
+        "ADD_PRODUCT": "Add Product",
+        "EDIT_PRODUCT": "Edit Product",
+        "DELETE_PRODUCT": "Delete Product",
+        "NAME": "Name",
+        "DESCRIPTION": "Description",
+        "PRICE": "Price",
+        "IMAGE": "Image",
+        "ADD_CAR": "Add to Cart",
+        "CAR": "Cart",
+        "CAR_LIST": "Cart List",
+        "TOTAL": "Total",
+        "CHECKOUT": "Checkout",
+        "PAYMENT": "Payment",
+        "PAYMENT_LIST": "Payment List",
+        "DATE": "Date",
+        "STATUS": "Status",
+        "PENDING": "Pending",
+        "PAID": "Paid",
+        "CANCELLED": "Cancelled",
+        "COMPLETED": "Completed",
+        "REVIEW_PRODUCT": "View All Reviews",
+        "categories": {
+            "CATEGORIES": "Categories",
+            "CATEGORIES_LIST": "Categories List",
+            "ADD_CATEGORY": "Add Category",
+            "EDIT_CATEGORY": "Edit Category",
+            "DELETE_CATEGORY": "Delete Category",
+            "NAME": "Name",
+            "DESCRIPTION": "Description"
+        },
+        "VIEWED_PRODUCTS": "Viewed Products",
+        "VIEWED_PRODUCTS_LIST": "Viewed Products List"
+    },
+    "ecommerce": {
+        "ECOMMERCE": "Ecommerce"
+    },
+    "404":{
+    "PAGE_NOT_FOUND": "Page not found",
+    "APOLOGIES": "Sorry, we couldn’t find the page you’re looking for.",
+    "BACK_TO_HOME": "Go back to home"
+    },
+    "pagination": {
+        "PREVIOUS": "Previous",
+        "NEXT": "Next"
+    },
+    "errors": {
+        "REQUIRED": "This field is required",
+        "MIN_LENGTH": "This field must be at least {{minLength}} characters long",
+        "MAX_LENGTH": "This field must be at most {{maxLength}} characters long",
+        "EMAIL": "This field must be a valid email address",
+        "PASSWORD": "The password must be at least 8 characters long, contain an uppercase letter and a number",
+        "CONFIRM_PASSWORD": "Passwords do not match",
+        "USER_EXISTS": "This user already exists",
+        "USER_NOT_FOUND": "This user does not exist",
+        "PASSWORD_INCORRECT": "The password is incorrect",
+        "CATEGORY_EXISTS": "This category already exists",
+        "CATEGORY_NOT_FOUND": "This category does not exist",
+        "PRODUCT_EXISTS": "This product already exists",
+        "PRODUCT_NOT_FOUND": "This product does not exist",
+        "CAR_EXISTS": "This product is already in the cart",
+        "CAR_NOT_FOUND": "This product is not in the cart",
+        "PAYMENT_EXISTS": "This payment already exists",
+        "PAYMENT_NOT_FOUND": "This payment does not exist",
+        "REVIEW_EXISTS": "This review already exists",
+        "REVIEW_NOT_FOUND": "This review does not exist",
+        "REVIEW_USER_EXISTS": "A review for this product already exists from this user",
+        "REVIEW_USER_NOT_FOUND": "There is no review for this product from this user"
+    }
+}

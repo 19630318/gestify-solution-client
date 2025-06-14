@@ -1,0 +1,92 @@
+import { Product } from "@core/interfaces/product/product";
+
+export const productsListFake: any[] = [
+    {
+        sallerId: "e910ed1c-1501-458c-922c-c681f1dd900b",
+        idProduct: "f1846135-816c-4c91-afab-6baf23f46b8a",
+        sallerName: "Irvin Rippin",
+        name: "Handmade Aluminum Pants",
+        images: [
+            {
+                idFile: "cbea2810-1ef4-4daa-ac63-3b217e94f410",
+                idReference: "f1846135-816c-4c91-afab-6baf23f46b8a",
+                name: "thoughtfully_hmph_smoggy.def",
+                description: "Innovative Gloves featuring tidy technology and Cotton construction",
+                url: "https://loremflickr.com/2680/1748/product?lock=7723959397611049",
+            },
+        ],
+        price: 805.59,
+        discountPercentage: 23,
+        stock: 79,
+        isActive: false,
+        category: "Jewelry",
+        subCategory: "Small",
+        brand: "Mann Group",
+    },
+    {
+        sallerId: "e910ed1c-1501-458c-922c-c681f1dd900b",
+        idProduct: "f1846135-816c-4c91-afab-6baf23f46b8a",
+        sallerName: "Irvin Rippin",
+        name: "Handmade Aluminum Pants",
+        images: [
+            {
+                idFile: "cbea2810-1ef4-4daa-ac63-3b217e94f410",
+                idReference: "f1846135-816c-4c91-afab-6baf23f46b8a",
+                name: "thoughtfully_hmph_smoggy.def",
+                description: "Innovative Gloves featuring tidy technology and Cotton construction",
+                url: "https://loremflickr.com/2680/1748/product?lock=7723959397611049",
+            },
+        ],
+        price: 805.59,
+        discountPercentage: 23,
+        stock: 79,
+        isActive: false,
+        category: "Jewelry",
+        subCategory: "Small",
+        brand: "Mann Group",
+    },
+    {
+        sallerId: "e910ed1c-1501-458c-922c-c681f1dd900b",
+        idProduct: "f1846135-816c-4c91-afab-6baf23f46b8a",
+        sallerName: "Irvin Rippin",
+        name: "Handmade Aluminum Pants",
+        images: [
+            {
+                idFile: "cbea2810-1ef4-4daa-ac63-3b217e94f410",
+                idReference: "f1846135-816c-4c91-afab-6baf23f46b8a",
+                name: "thoughtfully_hmph_smoggy.def",
+                description: "Innovative Gloves featuring tidy technology and Cotton construction",
+                url: "https://loremflickr.com/2680/1748/product?lock=7723959397611049",
+            },
+        ],
+        price: 805.59,
+        discountPercentage: 23,
+        stock: 79,
+        isActive: false,
+        category: "Jewelry",
+        subCategory: "Small",
+        brand: "Mann Group",
+    },
+    {
+        sallerId: "e910ed1c-1501-458c-922c-c681f1dd900b",
+        idProduct: "f1846135-816c-4c91-afab-6baf23f46b8a",
+        sallerName: "Irvin Rippin",
+        name: "Handmade Aluminum Pants",
+        images: [
+            {
+                idFile: "cbea2810-1ef4-4daa-ac63-3b217e94f410",
+                idReference: "f1846135-816c-4c91-afab-6baf23f46b8a",
+                name: "thoughtfully_hmph_smoggy.def",
+                description: "Innovative Gloves featuring tidy technology and Cotton construction",
+                url: "https://loremflickr.com/2680/1748/product?lock=7723959397611049",
+            },
+        ],
+        price: 805.59,
+        discountPercentage: 23,
+        stock: 79,
+        isActive: false,
+        category: "Jewelry",
+        subCategory: "Small",
+        brand: "Mann Group",
+    }
+]
