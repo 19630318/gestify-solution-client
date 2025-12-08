@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { AsideComponent } from '../aside/aside.component';
-import {OverlayModule} from '@angular/cdk/overlay';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { TranslocoService } from '@jsverse/transloco';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CookieServiceService } from '@core/services/cookie/cookie-service.service';
 import { FooterComponent } from '@componentsShared/footer/footer.component';
 import { AlertsComponent } from '@componentsShared/alerts/alerts.component';
+import { AsideShoppingCartComponent } from '@componentsShared/aside-shopping-cart/aside-shopping-cart.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,7 +22,8 @@ import { AlertsComponent } from '@componentsShared/alerts/alerts.component';
     TranslocoModule,
     MatIconModule,
     FooterComponent,
-    AlertsComponent
+    AlertsComponent,
+    AsideShoppingCartComponent
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
@@ -32,6 +34,7 @@ export class SidebarComponent {
   }
 
   openSidebar = signal(false);
+  expandSidebarShoppingCart = signal(false);
   traslocoService = inject(TranslocoService);
   cookieService = inject(CookieServiceService);
   isBrowser = isPlatformBrowser(this.platformId);

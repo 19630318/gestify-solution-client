@@ -34,6 +34,11 @@ export const routes: Routes = [
                         title: 'Home Products'
                     },
                     {
+                        path: 'profile',
+                        loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent),
+                        title: 'Profile'
+                    },
+                    {
                         path: 'products',
                         children: [
                             {

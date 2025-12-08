@@ -1,0 +1,36 @@
+@if (expanded) {
+    <li class="flex py-6">
+        <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+            <img src="{{product.images[0].url}}" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="size-full object-cover" />
+        </div>
+    
+        <div class="ml-4 flex flex-1 flex-col">
+            <div>
+                <div class="flex justify-between text-base font-medium text-gray-900">
+                <h3>
+                    <a class="text-black dark:text-white" href="#">{{ product.name }}</a>
+                </h3>
+                <p class="ml-4 text-black dark:text-white">{{ product.price| currency }}</p>
+                </div>
+                <p class="mt-1 text-sm text-black dark:text-white">${{ product.description }}</p>
+            </div>
+            <div class="flex flex-1 items-end justify-between text-sm">
+                <p class="text-black dark:text-white">1</p>
+        
+                <div class="flex">
+                <button type="button" class="font-medium text-red-500 dark:text-red-700">{{ 'products.REMOVE' | transloco }}</button>
+                </div>
+            </div>
+        </div>
+    </li>
+} @else {
+    <li class="w-24 -ml-3 text-center">
+        <div class="block size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+            <img src="{{product.images[0].url}}" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="size-full object-cover" />
+        </div>
+        <div class="w-24 text-center mb-4 mt-2">
+            <p><a class="text-black dark:text-white" href="#">{{ product.name }}</a></p>
+            <p class=" text-black dark:text-white">{{ product.price| currency }}</p>
+        </div>
+    </li>
+}

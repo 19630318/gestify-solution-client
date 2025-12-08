@@ -19,6 +19,7 @@ export interface IMenuItem {
     permissions?: string[];
     seccionId?: string;
     fontSize?: string;
+    queryParams?: any;
 }
 
 export interface IChildItem {
@@ -31,6 +32,7 @@ export interface IChildItem {
     permissions?: string[];
     disabled?: boolean;
     fontSize?: string;
+    queryParams?: any;
 }
 
 export interface IBadge {

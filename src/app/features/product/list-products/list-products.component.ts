@@ -6,6 +6,7 @@ import { Product } from '@core/interfaces/product/product';
 import { ProductComponent } from '@componentsShared/product/product.component';
 import { PaginationComponent } from '@componentsShared/pagination/pagination.component';
 import { ProductPlaceholderComponent } from '@componentsShared/product-placeholder/product-placeholder.component';
+import { ShearchingBarComponent } from '@componentsShared/shearching-bar/shearching-bar.component';
 
 @Component({
   selector: 'app-list-products',
@@ -14,7 +15,8 @@ import { ProductPlaceholderComponent } from '@componentsShared/product-placehold
     TranslocoModule,
     ProductComponent,
     PaginationComponent,
-    ProductPlaceholderComponent
+    ProductPlaceholderComponent,
+    ShearchingBarComponent
   ],
   templateUrl: './list-products.component.html',
   styleUrl: './list-products.component.css'
@@ -32,6 +34,7 @@ export class ListProductsComponent {
 
   getAllProducts() {
     this.mockProductService.getAll().then((products) => {
+      console.log(products);
       this.productsList.set(products);
       this.loading.set(false);
     });

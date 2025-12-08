@@ -4,13 +4,22 @@
     "sidebar": {
         "DASHBOARD": "Dashboard",
         "HOME": "Home",
+        "PROFILE": "Profile",
         "PRODUCTS": "Products",
         "PRODUCTS_LIST": "Products List",
         "categories": {
             "CATEGORIES": "Categories",
             "FURNITURE": "Furniture",
             "CLOTHING": "Clothing",
-            "ELECTRONICS": "Electronics"
+            "ELECTRONICS": "Electronics",
+            "MODERN": "Modern",
+            "CLASSIC": "Classic",
+            "VINTAGE": "Vintage",
+            "WOOD": "Wood",
+            "METAL": "Metal",
+            "STONE": "Stone",
+            "BRICK": "Brick",
+            "PVC": "PVC"
         }
     },
     "language": {
@@ -75,7 +84,10 @@
             "DESCRIPTION": "Description"
         },
         "VIEWED_PRODUCTS": "Viewed Products",
-        "VIEWED_PRODUCTS_LIST": "Viewed Products List"
+        "VIEWED_PRODUCTS_LIST": "Viewed Products List",
+        "REMOVE": "Remove",
+        "ADD_TO_CART": "Add to Cart",
+        "SUBTOTAL": "Subtotal"
     },
     "ecommerce": {
         "ECOMMERCE": "Ecommerce"
@@ -111,5 +123,34 @@
         "REVIEW_NOT_FOUND": "This review does not exist",
         "REVIEW_USER_EXISTS": "A review for this product already exists from this user",
         "REVIEW_USER_NOT_FOUND": "There is no review for this product from this user"
+    },
+    "profile": {
+        "PROFILE": "Profile",
+        "EDIT_PROFILE": "Edit Profile",
+        "CHANGE_PASSWORD": "Change Password",
+        "NAME": "Name",
+        "LASTNAME": "Lastname",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "CONFIRM_PASSWORD": "Confirm Password",
+        "SAVE": "Save",
+        "CANCEL": "Cancel",
+        "PERSONAL_INFORMATION": "Personal Information",
+        "PERSONAL_INFORMATION_DESCRIPTION": "Update your personal information",
+        "SECURITY": "Security",
+        "SECURITY_DESCRIPTION": "Update your security information",
+        "ACCOUNT_DATA": "Account Data",
+        "ACCOUNT_DATA_DESCRIPTION": "Update your account data",
+        "DIRECCION": "Address",
+        "DIRECCION_DESCRIPTION": "Update your address",
+        "PRIVACY": "Privacy",
+        "PRIVACY_DESCRIPTION": "Update your privacy settings",
+        "CARDS_PAYMENT": "Cards Payment",
+        "CARDS_PAYMENT_DESCRIPTION": "Update your cards payment"
+    },
+    "search": {
+        "SEARCH": "Search",
+        "PLACEHOLDER": "Search products",
+        "ALLCATEGORIES": "All categories"
     }
 }
