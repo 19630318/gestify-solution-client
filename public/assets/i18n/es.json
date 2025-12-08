@@ -5,12 +5,20 @@
         "HOME": "Inicio",
         "DASHBOARD": "Tablero",
         "PRODUCTS": "Productos",
+        "PROFILE": "Perfil",
         "PRODUCTS_LIST": "Lista de productos",
         "categories": {
             "CATEGORIES": "Categorías",
             "FURNITURE": "Muebles",
             "CLOTHING": "Ropa",
-            "ELECTRONICS": "Electrónica"
+            "ELECTRONICS": "Electrónica",
+            "MODERN": "Moderno",
+            "CLASSIC": "Classico",
+            "VINTAGE": "Vintage",
+            "WOOD": "Madera",
+            "METAL": "Metal",
+            "STONE": "Piedra",
+            "PVC": "PVC"
         }
     },
     "language": {
@@ -75,41 +83,73 @@
             "DESCRIPTION": "Descripción"
         },
         "VIEWED_PRODUCTS": "Productos vistos recientemente",
-        "VIEWED_PRODUCTS_LIST": "Lista de Productos Vistos Recientemente"
-},
-"ecommerce": {
-    "ECOMMERCE": "Comercio Electrónico"
-},
-"404":{
-    "PAGE_NOT_FOUND": "Página no encontrada",
-    "APOLOGIES": "Lo sentimos, no pudimos encontrar la página que estas buscando.",
-    "BACK_TO_HOME": "Volver a inicio"
-},
-"pagination": {
-    "PREVIOUS": "Anterior",
-    "NEXT": "Siguiente"
-},
-"errors": {
-    "REQUIRED": "Este campo es obligatorio",
-    "MIN_LENGTH": "Este campo debe tener al menos {{minLength}} caracteres",
-    "MAX_LENGTH": "Este campo debe tener como máximo {{maxLength}} caracteres",
-    "EMAIL": "Este campo debe ser un correo electrónico válido",
-    "PASSWORD": "La contraseña debe tener al menos 8 caracteres, una mayúscula y un número",
-    "CONFIRM_PASSWORD": "Las contraseñas no coinciden",
-    "USER_EXISTS": "Este usuario ya existe",
-    "USER_NOT_FOUND": "Este usuario no existe",
-    "PASSWORD_INCORRECT": "La contraseña es incorrecta",
-    "CATEGORY_EXISTS": "Esta categoría ya existe",
-    "CATEGORY_NOT_FOUND": "Esta categoría no existe",
-    "PRODUCT_EXISTS": "Este producto ya existe",
-    "PRODUCT_NOT_FOUND": "Este producto no existe",
-    "CAR_EXISTS": "Este producto ya existe en el carrito",
-    "CAR_NOT_FOUND": "Este producto no existe en el carrito",
-    "PAYMENT_EXISTS": "Este pago ya existe",
-    "PAYMENT_NOT_FOUND": "Este pago no existe",
-    "REVIEW_EXISTS": "Esta reseña ya existe",
-    "REVIEW_NOT_FOUND": "Esta reseña no existe",
-    "REVIEW_USER_EXISTS": "Esta reseña ya existe para este producto",
-    "REVIEW_USER_NOT_FOUND": "Esta reseña no existe para este producto"
-}
+        "VIEWED_PRODUCTS_LIST": "Lista de Productos Vistos Recientemente",
+        "REMOVE": "Eliminar",
+        "ADD_TO_CART": "Agregar al Carrito",
+        "SUBTOTAL": "Subtotal"
+    },
+    "ecommerce": {
+        "ECOMMERCE": "Comercio Electrónico"
+    },
+    "404":{
+        "PAGE_NOT_FOUND": "Página no encontrada",
+        "APOLOGIES": "Lo sentimos, no pudimos encontrar la página que estas buscando.",
+        "BACK_TO_HOME": "Volver a inicio"
+    },
+    "pagination": {
+        "PREVIOUS": "Anterior",
+        "NEXT": "Siguiente"
+    },
+    "errors": {
+        "REQUIRED": "Este campo es obligatorio",
+        "MIN_LENGTH": "Este campo debe tener al menos {{minLength}} caracteres",
+        "MAX_LENGTH": "Este campo debe tener como máximo {{maxLength}} caracteres",
+        "EMAIL": "Este campo debe ser un correo electrónico válido",
+        "PASSWORD": "La contraseña debe tener al menos 8 caracteres, una mayúscula y un número",
+        "CONFIRM_PASSWORD": "Las contraseñas no coinciden",
+        "USER_EXISTS": "Este usuario ya existe",
+        "USER_NOT_FOUND": "Este usuario no existe",
+        "PASSWORD_INCORRECT": "La contraseña es incorrecta",
+        "CATEGORY_EXISTS": "Esta categoría ya existe",
+        "CATEGORY_NOT_FOUND": "Esta categoría no existe",
+        "PRODUCT_EXISTS": "Este producto ya existe",
+        "PRODUCT_NOT_FOUND": "Este producto no existe",
+        "CAR_EXISTS": "Este producto ya existe en el carrito",
+        "CAR_NOT_FOUND": "Este producto no existe en el carrito",
+        "PAYMENT_EXISTS": "Este pago ya existe",
+        "PAYMENT_NOT_FOUND": "Este pago no existe",
+        "REVIEW_EXISTS": "Esta reseña ya existe",
+        "REVIEW_NOT_FOUND": "Esta reseña no existe",
+        "REVIEW_USER_EXISTS": "Esta reseña ya existe para este producto",
+        "REVIEW_USER_NOT_FOUND": "Esta reseña no existe para este producto"
+    },
+    "profile": {
+        "PROFILE": "Perfil",
+        "EDIT_PROFILE": "Editar perfil",
+        "CHANGE_PASSWORD": "Cambiar contraseña",
+        "NAME": "Nombre",
+        "LASTNAME": "Apellido",
+        "EMAIL": "Correo electrónico",
+        "PASSWORD": "Contraseña",
+        "CONFIRM_PASSWORD": "Confirmar contraseña",
+        "SAVE": "Guardar",
+        "CANCEL": "Cancelar",
+        "PERSONAL_INFORMATION": "Información personal",
+        "PERSONAL_INFORMATION_DESCRIPTION": "Actualiza tu información personal",
+        "SECURITY": "Seguridad",
+        "SECURITY_DESCRIPTION": "Actualiza tu información de seguridad",
+        "ACCOUNT_DATA": "Datos de la cuenta",
+        "ACCOUNT_DATA_DESCRIPTION": "Actualiza los datos de tu cuenta",
+        "DIRECCION": "Dirección",
+        "DIRECCION_DESCRIPTION": "Actualiza tu dirección",
+        "PRIVACY": "Privacidad",
+        "PRIVACY_DESCRIPTION": "Actualiza tus configuraciones de privacidad",
+        "CARDS_PAYMENT": "Métodos de pago",
+        "CARDS_PAYMENT_DESCRIPTION": "Actualiza tus métodos de pago"
+    },
+    "search": {
+        "SEARCH": "Buscar",
+        "PLACEHOLDER": "Buscar productos",
+        "ALLCATEGORIES": "Todas las categorías"
+    }
 }

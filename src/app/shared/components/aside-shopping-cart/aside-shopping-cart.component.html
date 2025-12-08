@@ -1,0 +1,67 @@
+<aside
+    id="logo-sidebar"
+    class="fixed top-0 right-0 z-40 border-l h-screen pt-20 bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700
+            transition-[width] duration-200 ease-in-out"
+    aria-label="Sidebar"
+    [ngClass]="{
+        'w-32 translate-x-full': !expanded,
+        'w-full sm:w-[450px]': expanded
+    }"
+>
+    <div class="h-screen">
+
+        <div class="pointer-events-auto w-screen h-screen max-w-md ">
+            <div class="flex h-full flex-col overflow-y-auto">
+                <div class="flex-1 px-4 overflow-y-auto py-6 sm:px-6">
+                    @if (expanded) {
+                        <div class="flex items-start justify-between mb-5">
+                            <h2 id="drawer-title" class="text-lg font-medium text-black dark:text-white">Shopping cart</h2>
+                        </div>
+                    }
+
+                    <div class="">
+                    <div class="flow-root">
+                        <ul ngSkip role="list" class="-my-6 divide-y divide-gray-200">
+                            @for (product of products(); track $index) {
+                                <app-product-shopping-cart ngSkipHydration [product]="product" [expanded]="expanded"></app-product-shopping-cart> 
+                            }
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+
+            @if (expanded) {
+                <div class="border-t border-gray-200 px-4 py-6 sm:px-6 mb-10">
+                    <div class="flex justify-between text-base font-medium text-black dark:text-white">
+                        <p>{{ 'products.SUBTOTAL' | transloco }}</p>
+                        <p>{{ sumPriceProducts() | currency }}</p>
+                    </div>
+                    <p class="mt-0.5 text-sm text-black dark:text-white">Shipping and taxes calculated at checkout.</p>
+                    <div class="mt-6">
+                        <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-indigo-700">{{ 'products.CHECKOUT' | transloco }}</a>
+                    </div>
+                    <div class="mt-6 flex justify-center text-center text-sm text-black dark:text-white">
+                        <p>
+                            or
+                            <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">
+                            {{ 'products.CHECKOUT' | transloco }}
+                            <span aria-hidden="true"> &rarr;</span>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            } @else {
+                <div class="border-t border-gray-200 py-6 mb-20">
+                    <div class="w-24 ml-3.5 block  text-center text-base font-medium text-black dark:text-white">
+                        <p>{{ 'products.SUBTOTAL' | transloco }}</p>
+                        <p>{{ sumPriceProducts() | currency }}</p>
+                    </div>
+                    <div class="w-24 mt-6 ml-3.5">
+                        <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-indigo-700">{{ 'products.CHECKOUT' | transloco }}</a>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    </div>
+</aside>

@@ -40,6 +40,14 @@ export class AsideComponent {
     },
     {
       type: MenuItemType.Link,
+      name:'sidebar.PROFILE',
+      icon: 'person',
+      state: '/app/profile',
+      disabled: false,
+      fontSize: '20px',
+    },
+    {
+      type: MenuItemType.Link,
       name:'sidebar.PRODUCTS',
       icon: 'inventory_2',
       state: '/app/products/list',
@@ -56,22 +64,49 @@ export class AsideComponent {
       sub: [
         {
           type: MenuItemType.Link,
-          name:'sidebar.categories.FURNITURE',
-          state: '/app',
+          name:'sidebar.categories.MODERN',
+          state: '/app/products/list',
+          queryParams: { category: 'modern' },
           disabled: false,
           fontSize: '14px',
         },
         {
           type: MenuItemType.Link,
-          name:'sidebar.categories.ELECTRONICS',
-          state: '/app',
+          name:'sidebar.categories.CLASSIC',
+          state: '/app/products/list',
+          queryParams: { category: 'classic' },
           disabled: false,
           fontSize: '14px',
         },
         {
           type: MenuItemType.Link,
-          name:'sidebar.categories.CLOTHING',
-          state: '/app',
+          name:'sidebar.categories.VINTAGE',
+          state: '/app/products/list',
+          queryParams: { category: 'vintage' },
+          disabled: false,
+          fontSize: '14px',
+        },
+        {
+          type: MenuItemType.Link,
+          name:'sidebar.categories.WOOD',
+          state: '/app/products/list',
+          queryParams: { category: 'wood' },
+          disabled: false,
+          fontSize: '14px',
+        },
+        {
+          type: MenuItemType.Link,
+          name:'sidebar.categories.METAL',
+          state: '/app/products/list',
+          queryParams: { category: 'metal' },
+          disabled: false,
+          fontSize: '14px',
+        },
+        {
+          type: MenuItemType.Link,
+          name:'sidebar.categories.PVC',
+          state: '/app/products/list',
+          queryParams: { category: 'pvc' },
           disabled: false,
           fontSize: '14px',
         }
@@ -113,8 +148,12 @@ export class AsideComponent {
 
   menuDisabled(name: string) {
     if (this.isBrowser) {
-      this.disabledMenuAll();
       const item = this.menuItems.find(item => item.name === name);
+      if(item?.disabled && item?.type === MenuItemType.DropDown) {
+        item.disabled = false;
+        return;
+      }
+      this.disabledMenuAll();
       if (item) {
         item.disabled = true;
       }
