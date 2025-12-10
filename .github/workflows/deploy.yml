@@ -28,22 +28,13 @@ jobs:
             echo "⬇ Actualizando código"
             git pull origin main
 
-            echo "🛑 Deteniendo contenedores anteriores (si existen)"
-            docker compose down || true
+            echo "🔥 Construyendo e instalando sin downtime"
+            docker compose up -d --build --remove-orphans
 
-            echo "🧹 Eliminando contenedores huérfanos"
-            docker compose rm -f || true
+            echo "🧹 Limpiando imágenes antiguas"
+            docker system prune -af || true
 
-            echo "🔥 Construyendo nueva imagen Docker"
-            docker compose build --no-cache
-
-            echo "🚀 Levantando aplicación"
-            docker compose up -d --remove-orphans
-
-            echo "🧹 Limpiando imágenes antiguas, cache y volúmenes no usados"
-            docker system prune -af --volumes || true
-
-            echo "✔ Deploy finalizado correctamente!"
+            echo "✔ Deploy finalizado sin caída del servicio!"
 
       - name: Notificar éxito por Telegram
         if: success()
