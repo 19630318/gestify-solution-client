@@ -2,45 +2,41 @@ name: Deploy Angular to VPS
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]   # Cada push o merge a main = deploy automático
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Test SSH Connection
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: echo "SSH OK!"
-
-      - name: Deploy via SSH
+      - name: Connect & Deploy to VPS
         uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ${{ secrets.SERVER_PATH }}
-            git pull
+            set -e
+            
+            echo "📥 Entrando al directorio del proyecto"
+            cd /shared/gestify-solution-client
 
-            echo "🔨 Building new Docker image..."
+            echo "⬇ Actualizando código"
+            git pull origin main
+
+            echo "🔨 Construyendo nueva imagen Docker"
             docker compose build --no-cache
 
-            echo "🛑 Stopping previous container..."
+            echo "🛑 Deteniendo contenedores anteriores"
             docker compose down
 
-            echo "🚀 Starting service..."
-            docker compose up -d
+            echo "🚀 Levantando aplicación"
+            docker compose up -d --remove-orphans
 
-            echo "🧹 Cleaning unused images..."
-            docker system prune -a -f
+            echo "🧹 Limpiando imágenes antiguas y cache"
+            docker system prune -af --volumes
 
-            echo "✔ Deploy finished successfully!"
+            echo "✔ Deploy finalizado correctamente!"
