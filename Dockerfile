@@ -4,7 +4,7 @@ FROM node:24-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci --silent
 
 COPY . .
 
@@ -14,8 +14,8 @@ RUN npx -y @angular/cli@20 build --configuration production
 # -------- Stage 2: Servidor con NGINX --------
 FROM nginx:alpine
 
-# Copiar archivos generados al servidor web
-COPY --from=build /app/dist/* /usr/share/nginx/html/
+# Copiar app compilada
+COPY --from=builder /app/dist/gestify-solution-client/browser/ /usr/share/nginx/html/
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Copiar configuración de nginx para SPA
+COPY nginx.conf /etc/nginx/conf.d/default.conf
