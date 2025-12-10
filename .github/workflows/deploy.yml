@@ -2,7 +2,7 @@ name: Deploy Angular to VPS
 
 on:
   push:
-    branches: [ "main" ]   # Cada push o merge a main = deploy automático
+    branches: [ "main" ]
 
 jobs:
   deploy:
@@ -13,30 +13,56 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Connect & Deploy to VPS
-        uses: appleboy/ssh-action@v0.1.6
+        id: deploy_step
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -e
-            
+
             echo "📥 Entrando al directorio del proyecto"
-            cd /shared/gestify-solution-client
+            cd ${{ secrets.SERVER_PATH }}
 
             echo "⬇ Actualizando código"
             git pull origin main
 
-            echo "🔨 Construyendo nueva imagen Docker"
-            docker compose build --no-cache
+            echo "🛑 Deteniendo contenedores anteriores (si existen)"
+            docker compose down || true
 
-            echo "🛑 Deteniendo contenedores anteriores"
-            docker compose down
+            echo "🧹 Eliminando contenedores huérfanos"
+            docker compose rm -f || true
+
+            echo "🔥 Construyendo nueva imagen Docker"
+            docker compose build --no-cache
 
             echo "🚀 Levantando aplicación"
             docker compose up -d --remove-orphans
 
-            echo "🧹 Limpiando imágenes antiguas y cache"
-            docker system prune -af --volumes
+            echo "🧹 Limpiando imágenes antiguas, cache y volúmenes no usados"
+            docker system prune -af --volumes || true
 
             echo "✔ Deploy finalizado correctamente!"
+
+      - name: Notificar éxito por Telegram
+        if: success()
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\",
+              \"text\": \"🚀 *DEPLOY COMPLETADO* ✔\n\n📌 Proyecto: gestify-solution-client\n🧑‍💻 Autor: ${{ github.actor }}\n📝 Commit: ${{ github.event.head_commit.message }}\n🔢 SHA: ${{ github.sha }}\n📅 Fecha: ${{ github.event.head_commit.timestamp }}\n🔗 https://github.com/${{ github.repository }}/commit/${{ github.sha }}\"
+            }" \
+            https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage
+
+      - name: Notificar error por Telegram
+        if: failure()
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\",
+              \"text\": \"❌ *DEPLOY FALLÓ* ❗\n\n🧑‍💻 Autor: ${{ github.actor }}\n📝 Commit: ${{ github.event.head_commit.message }}\n🔢 SHA: ${{ github.sha }}\n📅 Fecha: ${{ github.event.head_commit.timestamp }}\n⚠ Error: El proceso de deploy falló en el servidor.\n🔗 Revisión: https://github.com/${{ github.repository }}/commit/${{ github.sha }}\"
+            }" \
+            https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage
