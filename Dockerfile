@@ -15,7 +15,7 @@ RUN npx -y @angular/cli@20 build --configuration production
 FROM nginx:alpine
 
 # Copiar app compilada
-COPY --from=builder /app/dist/gestify-solution-client/browser/ /usr/share/nginx/html/
+COPY --from=build /app/dist/gestify-solution-client/browser/ /usr/share/nginx/html/
 
 # Copiar configuración de nginx para SPA
 COPY nginx.conf /etc/nginx/conf.d/default.conf
