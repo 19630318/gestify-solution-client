@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/gestify-solution-client/server",
+    "types": ["node"]
+  },
+  "files": [
+    "src/main.server.ts"
+  ]
+}

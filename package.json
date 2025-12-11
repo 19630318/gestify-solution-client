@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:gestify-solution-client": "node dist/gestify-solution-client/server/server.mjs",
-    "build:ssr": "ng run gestify-solution-client:server && ng run gestify-solution-client:build"
+    "build:ssr": "ng run gestify-solution-client:server && ng build",
+    "serve:ssr:gestify-solution-client": "node dist/gestify-solution-client/server/server.mjs"
   },
   "private": true,
   "dependencies": {
