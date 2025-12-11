@@ -1,8 +1,9 @@
 version: '3.8'
+
 services:
   gestify-web:
     build: .
     container_name: gestify-web
     ports:
-      - "127.0.0.1:7172:80"
+      - "127.0.0.1:7172:7172"
     restart: unless-stopped
