@@ -57,3 +57,48 @@ jobs:
               \"text\": \"❌ *DEPLOY FALLÓ* ❗\n\n🧑‍💻 Autor: ${{ github.actor }}\n📝 Commit: ${{ github.event.head_commit.message }}\n🔢 SHA: ${{ github.sha }}\n📅 Fecha: ${{ github.event.head_commit.timestamp }}\n⚠ Error: El proceso de deploy falló en el servidor.\n🔗 Revisión: https://github.com/${{ github.repository }}/commit/${{ github.sha }}\"
             }" \
             https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage
+
+      - name: Enviar correo de éxito
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "✔ Deploy completado en VPS"
+          to: ${{ secrets.MAIL_TO }}
+          from: "Deploy Bot <${{ secrets.MAIL_USERNAME }}>"
+          body: |
+            🚀 DEPLOY COMPLETADO CORRECTAMENTE
+
+            Proyecto: gestify-solution-client
+            Autor: ${{ github.actor }}
+            Commit: ${{ github.event.head_commit.message }}
+            SHA: ${{ github.sha }}
+            Fecha: ${{ github.event.head_commit.timestamp }}
+            Revisión: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+      
+      - name: Enviar correo de error
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "❌ Deploy FALLÓ en VPS"
+          to: ${{ secrets.MAIL_TO }}
+          from: "Deploy Bot <${{ secrets.MAIL_USERNAME }}>"
+          body: |
+            ❌ ERROR EN EL DEPLOY
+
+            Autor: ${{ github.actor }}
+            Commit: ${{ github.event.head_commit.message }}
+            SHA: ${{ github.sha }}
+            Fecha: ${{ github.event.head_commit.timestamp }}
+            
+            Revisión: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+
+            ⚠ Revisa la ejecución fallida:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
