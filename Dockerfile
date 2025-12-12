@@ -1,27 +1,23 @@
-# -------- Stage 1: Build Angular SSR --------
-FROM node:24-alpine AS build
+# Etapa de construcción
+FROM node:24-alpine AS builder
 
 WORKDIR /app
 
+# Instalar dependencias
 COPY package*.json ./
 RUN npm ci --silent
 
+# Copiar código fuente
 COPY . .
 
-# Construir SSR (browser + server)
-RUN npm run build:ssr
+# Compilar en modo producción
+RUN npm run build -- --configuration=production
 
-# -------- Stage 2: Servidor Node para SSR --------
-FROM node:24-alpine AS server
+# Etapa de producción: servidor estático con nginx
+FROM nginx:alpine
 
-WORKDIR /app
+# Copiar app compilada
+COPY --from=builder /app/dist/*/browser/ /usr/share/nginx/html/
 
-# Copiar dist SSR generado
-COPY --from=build /app/dist ./dist
-
-# Puerto interno del container
-ENV PORT=7172
-EXPOSE 7172
-
-# Ejecutar servidor SSR
-CMD ["node", "dist/gestify-solution-client/server/server.mjs"]
+# Copiar configuración de nginx para SPA
+COPY nginx.conf /etc/nginx/conf.d/default.conf
