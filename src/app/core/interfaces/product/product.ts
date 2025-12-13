@@ -1,6 +1,93 @@
-import { File } from "../file/file";
-// Representa un producto disponible en la tienda
+// ---------- PAGINATION ----------
+export interface PageResponse<T> {
+    totalElements: number;
+    totalPages: number;
+    pageable: Pageable;
+    first: boolean;
+    last: boolean;
+    size: number;
+    content: T[];
+    number: number;
+    sort: Sort;
+    numberOfElements: number;
+    empty: boolean; 
+}
+
+export interface Pageable {
+    pageNumber: number;
+    pageSize: number;
+    sort: Sort;
+    offset: number;
+    unpaged: boolean;
+    paged: boolean;
+}
+
+export interface Sort {
+    unsorted: boolean;
+    sorted: boolean;
+    empty: boolean;
+}
+
+// ---------- PRODUCT ----------
 export interface Product {
+    id: number;
+    createdAt: string;
+    updatedAt: string | null;
+    deletedAt: string | null;
+    createdBy: string;
+    updatedBy: string | null;
+    deletedBy: string | null;
+    name: string;
+    description: string;
+    price: number;
+    active: boolean;
+    category: ProductCategory;
+    images: ProductImage[];
+}
+
+export interface ProductCategory {
+    id: number;
+    createdAt: string;
+    updatedAt: string | null;
+    deletedAt: string | null;
+    createdBy: string;
+    updatedBy: string | null;
+    deletedBy: string | null;
+    name: string;
+    description: string;
+    image: ImageFile;
+}
+
+export interface ProductImage {
+    id: number;
+    createdAt: string;
+    updatedAt: string | null;
+    deletedAt: string | null;
+    createdBy: string;
+    updatedBy: string | null;
+    deletedBy: string | null;
+    portrait: boolean;
+    image: ImageFile;
+}
+
+export interface ImageFile {
+    id: number;
+    key: string;
+    name: string;
+    extension: string;
+    size: number;
+    blurHash: string;
+    path: string;
+    url: string;
+    contentType: string;
+    bucket: string;
+    createdAt: string;
+}
+
+// Shortcut específico
+export type ProductPage = PageResponse<Product>;
+
+/*export interface Product {
     sallerId: string; // ID del vendedor asociado al producto
     sallerName: string; // Nombre del vendedor asociado al producto
     idProduct: string; // Identificador único del producto
@@ -65,4 +152,4 @@ export interface ProductAnalytics {
     growthRate: number; // Tasa de crecimiento de ventas (semanal, mensual, etc.)
     stockTurnoverRate: number; // Frecuencia con la que el inventario del producto se vende y repone
     timeOnPage: number; // Tiempo promedio que los usuarios pasan en la página del producto (en segundos)
-}
+}*/

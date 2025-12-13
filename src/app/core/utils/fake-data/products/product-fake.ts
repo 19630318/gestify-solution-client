@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker';
-import { Product, Tag, Review } from '@core/interfaces/product/product';
 import { File, TypeFile } from '@core/interfaces/file/file';
 
 // ✅ Generar una imagen simulada
@@ -17,7 +16,7 @@ function generateFakeImage(idReference: string): File {
 }
 
 // ✅ Generar un tag falso
-function generateFakeTag(): Tag {
+function generateFakeTag(): any {
     return {
         idTag: faker.string.uuid(),
         name: faker.word.sample(),
@@ -31,7 +30,7 @@ function generateFakeTag(): Tag {
 }
 
 // ✅ Generar una reseña falsa
-function generateFakeReview(idProduct: string): Review {
+function generateFakeReview(idProduct: string): any {
     return {
         idReview: faker.string.uuid(),
         idProduct,
@@ -44,7 +43,7 @@ function generateFakeReview(idProduct: string): Review {
 }
 
 // ✅ Generador principal de productos
-export function generateFakeProduct(): Product {
+export function generateFakeProduct(): any {
     const idProduct = faker.string.uuid();
     const sallerId = faker.string.uuid();
     const reviews = faker.helpers.multiple(() => generateFakeReview(idProduct), {
@@ -74,11 +73,11 @@ export function generateFakeProduct(): Product {
         numberOfSales: faker.datatype.boolean() ? faker.number.int({ min: 0, max: 500 }) : undefined,
         isNew: faker.datatype.boolean(),
         tags: tags.length ? tags : undefined,
-        createdAt: faker.date.past({ years: 1 }),
-        updatedAt: faker.date.recent(),
+        createdAt: faker.date.past({ years: 1 }).toISOString(),
+        updatedAt: faker.date.recent().toISOString(),
     };
 }
 
-export function generateFakeProducts(count: number): Product[] {
+export function generateFakeProducts(count: number): any[] {
     return Array.from({ length: count }, generateFakeProduct);
 }

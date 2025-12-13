@@ -4,7 +4,7 @@
 
             <h2 class="text-2xl my-3.5 dark:text-white">{{ 'products.PRODUCTS_LIST' | transloco }}</h2>
 
-            <div class="my-6" ngSkipHydration><app-shearching-bar></app-shearching-bar></div>
+            <div class="my-6" ><app-shearching-bar></app-shearching-bar></div>
 
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 @if (loading()) {
@@ -12,14 +12,14 @@
                         <app-product-placeholder></app-product-placeholder>
                     }
                 } @else {
-                    @for (product of productsList(); track product.idProduct) {
-                        <app-product ngSkipHydration [product]="product" ></app-product>
+                    @for (product of productsList(); track product.id) {
+                        <app-product  [product]="product" ></app-product>
                     }
                 }
             </div>
         </div>
         <div class="w-full flex items-center justify-center my-4">
-            <app-pagination [sizeComponent]="'large'" [totalPages]="5" [currentPage]="3" ></app-pagination>
+            <app-pagination (pageChange)="onPageChange($event)" [sizeComponent]="settings().sizeComponent" [totalPages]="settings().totalPages" [currentPage]="settings().currentPage" ></app-pagination>
         </div>
     </div>
 </div>

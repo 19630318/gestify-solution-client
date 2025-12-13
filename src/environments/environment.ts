@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:3000/api/v1',
+    apiUrl: 'https://api.gestifysolution.oscarmedina.cloud/api/v1',
     defaultLang: 'en',
 };
