@@ -18,7 +18,7 @@ export class MockProductService {
         console.log('ID: ', id);
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                const product = this.products.find((p) => p.idProduct === id);
+                const product = this.products.find((p) => p.id.toString() === id);
                 if (product) {
                 resolve({ success: true, data: product});
                 } else {

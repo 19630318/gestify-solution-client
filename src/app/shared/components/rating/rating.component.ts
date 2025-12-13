@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoModule } from '@jsverse/transloco';
-import { Review } from '@core/interfaces/product/product';
 
 @Component({
   selector: 'app-rating',
@@ -15,12 +14,12 @@ import { Review } from '@core/interfaces/product/product';
 export class RatingComponent {
   maxStars = 5;
 
-  @Input() review: Review[] = [];
+  @Input() review: any = [];
   @Input() sizeComponent: 'tiny' | 'small' | 'medium' | 'large' = 'tiny';
 
   get averageRating(): number {
     if (this.review.length === 0) return 0;
-    const total = this.review.reduce((acc, r) => acc + r.rating, 0);
+    const total = this.review.reduce((acc: number, r: any) => acc + r.rating, 0);
     return total / this.review.length;
   }
 

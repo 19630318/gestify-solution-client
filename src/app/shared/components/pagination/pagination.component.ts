@@ -15,15 +15,17 @@ export class PaginationComponent {
 
   @Input() sizeComponent: 'small' | 'large' = 'small';
   @Input() totalPages: number = 0;
-  @Input() currentPage: number = 0;
+  @Input() currentPage: number = 1;
   @Output() pageChange = new EventEmitter<number>();
 
-  pageChangeEvent(page: number) {
-    this.pageChange.emit(page);
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.pageChange.emit(page);
+    }
   }
 
   getPages(): number[] {
-    return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
 import { AsideComponent } from '../aside/aside.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { TranslocoService } from '@jsverse/transloco';
@@ -74,6 +74,20 @@ export class SidebarComponent {
         this.dataTheme.set('dark');
       }
       this.cookieService.setCookie('data-theme', this.dataTheme() as 'dark' | 'light')
+  }
+
+  //This method close the sidebar when click outside the sidebar
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    const sidebar = document.getElementById('app-aside');
+    const toggleBtn = document.getElementById('sidebar-toggle-button');
+    const target = event.target as HTMLElement;
+    if (
+      sidebar && !sidebar.contains(target) &&
+      toggleBtn && !toggleBtn.contains(target)
+    ) {
+      this.openSidebar.set(false);
+    }
   }
 
 }

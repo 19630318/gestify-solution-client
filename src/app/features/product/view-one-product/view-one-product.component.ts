@@ -13,6 +13,7 @@ import { AlertService } from '@core/services/alerts/alert.service';
 import { ViewbeforeRecommendationsProductsComponent } from '@componentsShared/viewbefore-recommendations-products/viewbefore-recommendations-products.component';
 import { CookieServiceService } from '@core/services/cookie/cookie-service.service';
 import { toLightweightProduct } from '@core/utils/helper';
+import { ProductsApiService } from '@core/services/products-api/products-api.service';
 
 @Component({
   selector: 'app-view-one-product',
@@ -42,6 +43,7 @@ export class ViewOneProductComponent {
   private mockProductService = inject(MockProductService);
   readonly transloco = inject(TranslocoService);
   readonly cookieService = inject(CookieServiceService);
+  readonly productsApiService = inject(ProductsApiService);
   private transferState = inject(TransferState);
   alertService = inject(AlertService);
   private route = inject(ActivatedRoute);
@@ -66,36 +68,25 @@ export class ViewOneProductComponent {
 
   async getProduct() {
     const uuid = this.uuid();
-    const key = makeStateKey<Product>(uuid);
-  
-    if (isPlatformBrowser(this.platformId) && this.transferState.hasKey(key)) {
-      // Caso cliente con TransferState (SSR ya cargado)
-      const saved = this.transferState.get(key, {} as Product);
-      console.log('Leyendo desde TransferState en cliente:', saved);
-      this.product.set(saved);
-      this.imagePreview.set(saved.images[0]?.url);
-      this.loading.set(false);
-      // Quitar la key si quieres evitar leerla otra vez
-      this.transferState.remove(key);
-      return;
-    }
   
     // Aquí viene la petición al backend (cliente o servidor)
     try {
-      const response = await this.mockProductService.getById(uuid);
-      if (response.success) {
-        this.product.set(response.data);
-        this.imagePreview.set(response.data.images[0]?.url);
-  
-        if (isPlatformServer(this.platformId)) {
-          console.log('Guardando en TransferState en servidor:', response.data);
-          this.transferState.set(key, response.data);
+      await this.productsApiService.getProductById(uuid).subscribe({
+        next: (response) => {
+          if (response) {
+            this.product.set(response);
+            this.imagePreview.set(response.images[0].image.url);
+            this.addProductListCookie(response);
+            this.loading.set(false);
+          } else {
+            this.alertService.show(this.transloco.translate('errors.PRODUCT_NOT_FOUND'), 'danger');
+          }
+        },
+        error: (error) => {
+          this.alertService.show(this.transloco.translate('errors.NETWORK_ERROR'), 'danger');
+          console.error('Error fetching product:', error);
         }
-        this.addProductListCookie(response.data);
-        this.loading.set(false);
-      } else {
-        this.alertService.show(this.transloco.translate('errors.PRODUCT_NOT_FOUND'), 'danger');
-      }
+      });
     } catch (error) {
       this.alertService.show(this.transloco.translate('errors.NETWORK_ERROR'), 'danger');
       console.error('Error fetching product:', error);
