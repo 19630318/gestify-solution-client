@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TranslocoModule } from '@jsverse/transloco';
+import { CategoryApiService } from '@core/services/category-api/category-api.service';
 
 @Component({
   selector: 'app-aside',
@@ -19,6 +20,7 @@ export class AsideComponent {
   platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
   router = inject(Router);
+  categoryApiService = inject(CategoryApiService);
 
   menuItems: IMenuItem[] = [
     /*{
@@ -48,6 +50,14 @@ export class AsideComponent {
     },
     {
       type: MenuItemType.Link,
+      name:'sidebar.BUSINESSES',
+      icon: 'store',
+      state: '/business/businesses/list',
+      disabled: false,
+      fontSize: '20px',
+    },
+    {
+      type: MenuItemType.Link,
       name:'sidebar.PRODUCTS',
       icon: 'inventory_2',
       state: '/business/products/list',
@@ -61,56 +71,6 @@ export class AsideComponent {
       state: '/business/products/categories',
       disabled: false,
       fontSize: '20px',
-      sub: [
-        {
-          type: MenuItemType.Link,
-          name:'sidebar.categories.MODERN',
-          state: '/business/products/list',
-          queryParams: { category: 'modern' },
-          disabled: false,
-          fontSize: '14px',
-        },
-        {
-          type: MenuItemType.Link,
-          name:'sidebar.categories.CLASSIC',
-          state: '/business/products/list',
-          queryParams: { category: 'classic' },
-          disabled: false,
-          fontSize: '14px',
-        },
-        {
-          type: MenuItemType.Link,
-          name:'sidebar.categories.VINTAGE',
-          state: '/business/products/list',
-          queryParams: { category: 'vintage' },
-          disabled: false,
-          fontSize: '14px',
-        },
-        {
-          type: MenuItemType.Link,
-          name:'sidebar.categories.WOOD',
-          state: '/business/products/list',
-          queryParams: { category: 'wood' },
-          disabled: false,
-          fontSize: '14px',
-        },
-        {
-          type: MenuItemType.Link,
-          name:'sidebar.categories.METAL',
-          state: '/business/products/list',
-          queryParams: { category: 'metal' },
-          disabled: false,
-          fontSize: '14px',
-        },
-        {
-          type: MenuItemType.Link,
-          name:'sidebar.categories.PVC',
-          state: '/business/products/list',
-          queryParams: { category: 'pvc' },
-          disabled: false,
-          fontSize: '14px',
-        }
-      ]
     }
   ];
 
@@ -118,6 +78,7 @@ export class AsideComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.selectMenuCurrentRoute();
+    this.getCategories();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -126,6 +87,19 @@ export class AsideComponent {
     if (changes['openSidebar']) {
       
     }
+  }
+
+  getCategories() {
+    this.categoryApiService.getAllCategories().subscribe(res => {
+      this.menuItems[4].sub = res.content.map(item => ({
+        type: MenuItemType.Link,
+        name: item.name,
+        state: '/business/products/list',
+        queryParams: { category: item.name.toLowerCase() },
+        disabled: false,
+        fontSize: '14px',
+      }));
+    });
   }
 
   selectMenuCurrentRoute() {

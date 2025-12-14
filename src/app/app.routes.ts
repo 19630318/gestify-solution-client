@@ -50,6 +50,26 @@ export const routes: Routes = [
                                         title: 'Product',
                                     }     
                                 ]
+                            },
+                            {
+                                path: 'businesses',
+                                children: [
+                                    {
+                                        path: '',
+                                        redirectTo: 'list',
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: 'list',
+                                        loadComponent: () => import('./features/business/list-businesses/list-businesses.component').then(m => m.ListBusinessesComponent),
+                                        title: 'List Businesses',
+                                    },
+                                    {
+                                        path: 'business/:uuid',
+                                        loadComponent: () => import('./features/business/view-one-business/view-one-business.component').then(m => m.ViewOneBusinessComponent),
+                                        title: 'Business',
+                                    }
+                                ]
                             }
                         ]
                     }
