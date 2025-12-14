@@ -40,7 +40,6 @@ import { ProductsApiService } from '@core/services/products-api/products-api.ser
 })
 export class ViewOneProductComponent {
 
-  private mockProductService = inject(MockProductService);
   readonly transloco = inject(TranslocoService);
   readonly cookieService = inject(CookieServiceService);
   readonly productsApiService = inject(ProductsApiService);

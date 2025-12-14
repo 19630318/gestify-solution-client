@@ -7,6 +7,7 @@
         "PROFILE": "Profile",
         "PRODUCTS": "Products",
         "PRODUCTS_LIST": "Products List",
+        "BUSINESSES": "Businesses",
         "categories": {
             "CATEGORIES": "Categories",
             "FURNITURE": "Furniture",
@@ -88,6 +89,23 @@
         "REMOVE": "Remove",
         "ADD_TO_CART": "Add to Cart",
         "SUBTOTAL": "Subtotal"
+    },
+    "businesses": {
+        "BUSINESSES": "Businesses",
+        "BUSINESSES_LIST": "Businesses List",
+        "ADD_BUSINESS": "Add Business",
+        "EDIT_BUSINESS": "Edit Business",
+        "DELETE_BUSINESS": "Delete Business",
+        "NAME": "Name",
+        "DESCRIPTION": "Description",
+        "ADDRESS": "Address",
+        "PHONE": "Phone",
+        "EMAIL": "Email",
+        "WEBSITE": "Website",
+        "CATEGORIES": "Categories",
+        "PRODUCTS": "Products",
+        "BUSINESS": "Business",
+        "ERROR_BUSINESSES_LIST": "Error to get businesses list"
     },
     "ecommerce": {
         "ECOMMERCE": "Ecommerce"

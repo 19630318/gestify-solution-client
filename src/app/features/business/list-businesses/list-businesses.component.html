@@ -2,9 +2,9 @@
     <div class="bg-white dark:bg-gray-800">
         <div class="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8 xl:px-4 2xl:px-4">
 
-            <h2 class="text-2xl my-3.5 dark:text-white">{{ 'products.PRODUCTS_LIST' | transloco }}</h2>
+            <h2 class="text-2xl my-3.5 dark:text-white">{{ 'businesses.BUSINESSES' | transloco }}</h2>
 
-            <div class="my-6" ><app-shearching-bar [listCategory]="listCategory()" [nameModel]="nameModel()" ></app-shearching-bar></div>
+            <div class="my-6" ><app-shearching-bar [nameModel]="nameModel()"></app-shearching-bar></div>
 
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 @if (loading()) {
@@ -12,8 +12,8 @@
                         <app-product-placeholder></app-product-placeholder>
                     }
                 } @else {
-                    @for (product of productsList(); track product.id) {
-                        <app-product  [product]="product" ></app-product>
+                    @for (business of businessesList(); track business.id) {
+                        <app-business  [business]="business" ></app-business>
                     }
                 }
             </div>
@@ -23,3 +23,4 @@
         </div>
     </div>
 </div>
+

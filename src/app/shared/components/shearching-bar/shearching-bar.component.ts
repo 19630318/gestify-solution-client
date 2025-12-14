@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoModule } from '@jsverse/transloco';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { CategoryApiService } from '@core/services/category-api/category-api.service';
 
 @Component({
   selector: 'app-shearching-bar',
@@ -15,10 +16,14 @@ import { OverlayModule } from '@angular/cdk/overlay';
 })
 export class ShearchingBarComponent {
 
-  listCategory = signal(['search.ALLCATEGORIES', 'sidebar.categories.MODERN', 'sidebar.categories.CLASSIC', 'sidebar.categories.VINTAGE', 'sidebar.categories.WOOD', 'sidebar.categories.METAL', 'sidebar.categories.PVC']);
+  @Input() listCategory: string[] = [];
+  @Input() nameModel: string = '';
   isOpenListCategory = signal(false);
-
+  categorySelected = inject(CategoryApiService);
   selectCategory = signal('search.ALLCATEGORIES');
+
+  ngOnInit(): void {
+  }
 
   selectCategoryItem(category: string) {
     this.selectCategory.set(category);
