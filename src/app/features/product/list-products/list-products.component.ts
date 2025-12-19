@@ -51,6 +51,11 @@ export class ListProductsComponent {
     this.productsApiService.getAllProducts(page).subscribe((res) => {
 
       this.productsList.set(res.content);
+      if (res.content.length === 0) {
+        this.nameModel.set('products.NO_PRODUCTS_FOUND');
+      } else {
+        this.nameModel.set('listProducts');
+      }
 
       this.settings.set({
         ...this.settings(),

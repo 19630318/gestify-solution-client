@@ -9,12 +9,13 @@
             @for (item of menuItems; track $index) {
                @if (item.type === 'link' && isBrowser) {
                   <li ngSkipHydration class="relative group">
-                     <a 
+                     <button 
                         [routerLink]="item.state"
                         [queryParams]="item.queryParams"
                         (click)="menuDisabled(item.name? item.name : '')"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                        [ngClass]="{'bg-gray-100 dark:bg-gray-500': item.disabled }"
+                        type="button"
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" 
+                        [ngClass]="{'bg-gray-100 dark:bg-gray-500': item.disabled, 'hidden': !item.show}"
                      >
                         @if(item.icon){
                            <mat-icon [ngStyle]="{'width': item.fontSize? item.fontSize: '20px'}">{{ item.icon }}</mat-icon>
@@ -31,18 +32,19 @@
                            }
                            
                         </span>
-                     </a>
+                     </button>
                   </li>
                }
                @if (item.type === 'dropDown' && isBrowser) {
                   <li ngSkipHydration>
                      <button 
                         (click)="menuDisabled(item.name? item.name : '')"
-                        [ngClass]="{'bg-gray-100 dark:bg-gray-500': item.disabled }"
+                        [ngClass]="{'bg-gray-100 dark:bg-gray-500': item.disabled, 'hidden': !item.show}"
                         type="button" 
                         class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" 
                         aria-controls="dropdown-example" 
-                        data-collapse-toggle="dropdown-example">
+                        data-collapse-toggle="dropdown-example"
+                        >
                         <mat-icon [ngStyle]="{'width': item.fontSize? item.fontSize: '20px'}">{{ item.icon }}</mat-icon>
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">{{ item.name | transloco }}</span>
                         
@@ -66,7 +68,7 @@
                                     [routerLink]="subItem.state"
                                     [queryParams]="subItem.queryParams"
                                     (click)="subMenuDisabled(item.name? item.name : '', subItem.name? subItem.name : '')"
-                                    [ngClass]="{'bg-gray-100 dark:bg-gray-500': subItem.disabled }"
+                                    [ngClass]="{'bg-gray-100 dark:bg-gray-500': subItem.disabled, 'hidden': !subItem.show}"
                                     [ngStyle]="{'font-size': subItem.fontSize? subItem.fontSize: '12px'}"
                                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                  >

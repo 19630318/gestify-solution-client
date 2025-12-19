@@ -88,7 +88,8 @@
         "VIEWED_PRODUCTS_LIST": "Viewed Products List",
         "REMOVE": "Remove",
         "ADD_TO_CART": "Add to Cart",
-        "SUBTOTAL": "Subtotal"
+        "SUBTOTAL": "Subtotal",
+        "NO_PRODUCTS_FOUND": "No products found"
     },
     "businesses": {
         "BUSINESSES": "Businesses",
@@ -105,7 +106,8 @@
         "CATEGORIES": "Categories",
         "PRODUCTS": "Products",
         "BUSINESS": "Business",
-        "ERROR_BUSINESSES_LIST": "Error to get businesses list"
+        "ERROR_BUSINESSES_LIST": "Error to get businesses list",
+        "NO_BUSINESSES_FOUND": "No businesses found"
     },
     "ecommerce": {
         "ECOMMERCE": "Ecommerce"

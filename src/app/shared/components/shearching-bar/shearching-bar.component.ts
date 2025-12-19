@@ -18,6 +18,7 @@ export class ShearchingBarComponent {
 
   @Input() listCategory: string[] = [];
   @Input() nameModel: string = '';
+  @Input() showShearchingBar: boolean = false;
   isOpenListCategory = signal(false);
   categorySelected = inject(CategoryApiService);
   selectCategory = signal('search.ALLCATEGORIES');

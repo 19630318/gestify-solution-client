@@ -87,7 +87,8 @@
         "VIEWED_PRODUCTS_LIST": "Lista de Productos Vistos Recientemente",
         "REMOVE": "Eliminar",
         "ADD_TO_CART": "Agregar al Carrito",
-        "SUBTOTAL": "Subtotal"
+        "SUBTOTAL": "Subtotal",
+        "NO_PRODUCTS_FOUND": "No se encontraron productos"
     },
     "businesses": {
         "BUSINESSES": "Negocios",
@@ -104,7 +105,8 @@
         "CATEGORIES": "Categorías",
         "PRODUCTS": "Productos",
         "BUSINESS": "Negocio",
-        "ERROR_BUSINESSES_LIST": "Error al obtener los negocios"
+        "ERROR_BUSINESSES_LIST": "Error al obtener los negocios",
+        "NO_BUSINESSES_FOUND": "No se encontraron negocios"
     },
     "ecommerce": {
         "ECOMMERCE": "Comercio Electrónico"
