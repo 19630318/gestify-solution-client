@@ -1,5 +1,5 @@
 import { Component, inject, Input, PLATFORM_ID, SimpleChanges } from '@angular/core';
-import { IMenuItem } from '@core/interfaces/aside/aside';
+import { IChildItem, IMenuItem } from '@core/interfaces/aside/aside';
 import { MenuItemType } from '@core/interfaces/aside/aside';
 import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,24 +37,27 @@ export class AsideComponent {
       name: 'sidebar.HOME',
       icon: 'home',
       state: '/business/home',
-      disabled: false,
+      disabled: true,
       fontSize: '20px',
+      show: true,
     },
     {
       type: MenuItemType.Link,
       name:'sidebar.PROFILE',
       icon: 'person',
       state: '/business/profile',
-      disabled: false,
+      disabled: true,
       fontSize: '20px',
+      show: false,
     },
     {
       type: MenuItemType.Link,
       name:'sidebar.BUSINESSES',
       icon: 'store',
       state: '/business/businesses/list',
-      disabled: false,
+      disabled: true,
       fontSize: '20px',
+      show: true,
     },
     {
       type: MenuItemType.Link,
@@ -63,6 +66,7 @@ export class AsideComponent {
       state: '/business/products/list',
       disabled: true,
       fontSize: '20px',
+      show: true,
     },
     {
       type: MenuItemType.DropDown,
@@ -71,6 +75,7 @@ export class AsideComponent {
       state: '/business/products/categories',
       disabled: false,
       fontSize: '20px',
+      show: true,
     }
   ];
 
@@ -91,14 +96,19 @@ export class AsideComponent {
 
   getCategories() {
     this.categoryApiService.getAllCategories().subscribe(res => {
-      this.menuItems[4].sub = res.content.map(item => ({
-        type: MenuItemType.Link,
-        name: item.name,
-        state: '/business/products/list',
-        queryParams: { category: item.name.toLowerCase() },
-        disabled: false,
-        fontSize: '14px',
-      }));
+      if(res.content.length > 0) {
+        this.menuItems[4].sub = res.content.map((item) => ({
+          type: MenuItemType.Link,
+          name: item.name,
+          state: '/business/products/list',
+          queryParams: { category: item.name.toLowerCase() },
+          disabled: false,
+          fontSize: '14px',
+          show: true,
+        } as IChildItem));
+      } else {
+        this.menuItems[4].show = false;
+      }
     });
   }
 

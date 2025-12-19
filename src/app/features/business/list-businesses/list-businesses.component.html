@@ -4,7 +4,7 @@
 
             <h2 class="text-2xl my-3.5 dark:text-white">{{ 'businesses.BUSINESSES' | transloco }}</h2>
 
-            <div class="my-6" ><app-shearching-bar [nameModel]="nameModel()"></app-shearching-bar></div>
+            <div class="my-6" ><app-shearching-bar [nameModel]="nameModel()" [showShearchingBar]="businessesList().length > 0"></app-shearching-bar></div>
 
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 @if (loading()) {
@@ -12,8 +12,14 @@
                         <app-product-placeholder></app-product-placeholder>
                     }
                 } @else {
-                    @for (business of businessesList(); track business.id) {
-                        <app-business  [business]="business" ></app-business>
+                    @if(businessesList().length > 0) {
+                        @for (business of businessesList(); track business.id) {
+                            <app-business  [business]="business" ></app-business>
+                        }
+                    } @else {
+                        <div class="col-span-full h-36 xl:h-40 2xl:h-48 text-center mt-2 xl:mt-12 2xl:mt-16">
+                            <p class="w-full text-lg text-gray-500 dark:text-gray-400">{{ 'businesses.NO_BUSINESSES_FOUND' | transloco }}</p>
+                        </div>
                     }
                 }
             </div>

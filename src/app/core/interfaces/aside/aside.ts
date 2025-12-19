@@ -20,6 +20,7 @@ export interface IMenuItem {
     seccionId?: string;
     fontSize?: string;
     queryParams?: any;
+    show?: boolean;
 }
 
 export interface IChildItem {
@@ -33,6 +34,7 @@ export interface IChildItem {
     disabled?: boolean;
     fontSize?: string;
     queryParams?: any;
+    show?: boolean;
 }
 
 export interface IBadge {
