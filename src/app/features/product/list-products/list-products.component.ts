@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { MockProductService } from '@core/utils/fake-service/products-fake.service';
 import { Product } from '@core/interfaces/product/product';
 import { ProductComponent } from '@componentsShared/product/product.component';
@@ -10,6 +10,7 @@ import { ShearchingBarComponent } from '@componentsShared/shearching-bar/shearch
 import { ProductsApiService } from '@core/services/products-api/products-api.service';
 import { ListSettingsPagination } from '@core/interfaces/sizepagination/sizepagination';
 import { CategoryApiService } from '@core/services/category-api/category-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-products',
@@ -29,6 +30,8 @@ export class ListProductsComponent {
   private mockProductService = inject(MockProductService);
   private categoryApiSelected = inject(CategoryApiService);
   private productsApiService = inject(ProductsApiService);
+  readonly transloco = inject(TranslocoService);
+  private route = inject(ActivatedRoute);
 
   settings = signal<ListSettingsPagination>({
     sizeComponent: 'small',
@@ -37,18 +40,30 @@ export class ListProductsComponent {
   });
   productsList = signal<Product[]>([]);
   loading = signal<boolean>(true);
-  listCategory = signal<string[]>(['search.ALLCATEGORIES']);
+  listCategory = signal<string[]>([]);
   nameModel = signal('listProducts');
 
   ngOnInit() {
-    this.getAllProducts(0); // page 0 por defecto
+    this.getCategoryQueryParams(); // page 0 por defecto
     this.getCategories();
   }
 
-  getAllProducts(page: number) {
+  getCategoryQueryParams() {
+    this.route.queryParamMap.subscribe(params => {
+      const categoryId = params.get('categoryId');
+      if(categoryId) {
+        this.getAllProducts(0, categoryId);
+      } else {
+        this.getAllProducts(0);
+      }
+    });
+    //this.listCategory(
+  }
+
+  getAllProducts(page: number, categoryId?: string) {
     this.loading.set(true);
 
-    this.productsApiService.getAllProducts(page).subscribe((res) => {
+    this.productsApiService.getAllProducts(page, undefined, categoryId).subscribe((res) => {
 
       this.productsList.set(res.content);
       if (res.content.length === 0) {
@@ -59,8 +74,8 @@ export class ListProductsComponent {
 
       this.settings.set({
         ...this.settings(),
-        totalPages: res.totalPages,
-        currentPage: res.number + 1,
+        totalPages: res.page.totalPages,
+        currentPage: res.page.number + 1,
       });
 
       this.loading.set(false);
@@ -69,7 +84,7 @@ export class ListProductsComponent {
 
   getCategories() {
     this.categoryApiSelected.getAllCategories().subscribe((res) => {
-      this.listCategory.update((list) => [...list, ...res.content.map((item) => item.name)]);
+      this.listCategory.update((list) => [this.transloco.translate('search.ALLCATEGORIES'), ...res.content.map((item) => item.name)]);
     });
   }
 

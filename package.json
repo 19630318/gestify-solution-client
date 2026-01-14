@@ -21,6 +21,7 @@
     "@angular/router": "^20.0.3",
     "@faker-js/faker": "^9.8.0",
     "@jsverse/transloco": "^7.6.1",
+    "@meddv/ngx-pinch-zoom": "^20.0.0",
     "@tailwindcss/postcss": "^4.1.6",
     "material-icons": "^1.13.14",
     "ngx-image-zoom": "^3.0.0",

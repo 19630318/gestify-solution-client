@@ -13,8 +13,8 @@ export class ProductsApiService {
   private productsCache = signal<Record<string, ProductPage>>({});
   private http = inject(HttpClient);
 
-  getAllProducts(page: number = 0, size: number = 28): Observable<ProductPage> {
-    const key = `${page}-${size}`;
+  getAllProducts(page: number = 0, size: number = 28, categoryId?: string): Observable<ProductPage> {
+    const key = `${page}-${size}-${categoryId}`;
 
     const cache = this.productsCache()[key];
     if (cache) {
@@ -22,7 +22,7 @@ export class ProductsApiService {
     }
 
     return this.http.get<ProductPage>(
-      `${environment.apiUrl}/products?page=${page}&size=${size}`
+      `${environment.apiUrl}/products?page=${page}&size=${size}${categoryId ? `&categoryId=${categoryId}` : ''}`
     ).pipe(
       tap((res) => { //tap is used to perform side effects
         this.productsCache.update(cache => ({

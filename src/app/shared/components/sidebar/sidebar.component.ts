@@ -11,6 +11,8 @@ import { CookieServiceService } from '@core/services/cookie/cookie-service.servi
 import { FooterComponent } from '@componentsShared/footer/footer.component';
 import { AlertsComponent } from '@componentsShared/alerts/alerts.component';
 import { AsideShoppingCartComponent } from '@componentsShared/aside-shopping-cart/aside-shopping-cart.component';
+import { CoreService } from '@core/interfaces/core/core.service';
+import { Logo } from '@core/interfaces/core/logo';
 
 @Component({
   selector: 'app-sidebar',
@@ -29,15 +31,12 @@ import { AsideShoppingCartComponent } from '@componentsShared/aside-shopping-car
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  platformId(platformId: any) {
-    throw new Error('Method not implemented.');
-  }
 
   openSidebar = signal(false);
   expandSidebarShoppingCart = signal(false);
   traslocoService = inject(TranslocoService);
   cookieService = inject(CookieServiceService);
-  isBrowser = isPlatformBrowser(this.platformId);
+  coreService = inject(CoreService);
 
   isOpenOverlayAvatar = signal(false);
   currentLanguage = signal<string>('en');
@@ -47,8 +46,17 @@ export class SidebarComponent {
 
   dataTheme = signal<'dark' | 'light'>('dark');
   leguage = signal<Lenguage>(Lenguage.English);
+  logo = signal<Logo>({
+    name: '',
+    urlLogo: ''
+  });
 
   ngOnInit(): void {
+    this.getLogo();
+  }
+
+  ngOnDestroy(): void {
+    this.coreService.setDefaultLogo();
   }
 
   ngAfterViewInit(): void {
@@ -88,6 +96,13 @@ export class SidebarComponent {
     ) {
       this.openSidebar.set(false);
     }
+  }
+
+  getLogo() {
+    this.coreService.logo$.subscribe(valor => {
+      console.log('valor', valor);
+      this.logo.set(valor);
+    });
   }
 
 }

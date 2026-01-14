@@ -90,4 +90,16 @@ export interface Page<T> {
     empty: boolean;
 }
 
-export type BusinessPage = Page<Business>;
+export interface PageInfo {
+    size: number;
+    number: number;
+    totalElements: number;
+    totalPages: number;
+}
+
+export interface PageGetBusinessPaginatedResponse {
+    content: Business[];
+    page: PageInfo;
+}
+
+export type BusinessPage = PageGetBusinessPaginatedResponse;

@@ -41,6 +41,18 @@ export interface Page<T> {
   empty: boolean;
 }
 
-export type CategoryPage = Page<Category>;
+export interface PageInfo {
+  size: number;
+  number: number;
+  totalElements: number;
+  totalPages: number;
+}
+
+export interface PageGetCategoriesPaginatedResponse {
+  content: Category[];
+  page: PageInfo;
+}
+
+export type CategoryPage = PageGetCategoriesPaginatedResponse;
 
 

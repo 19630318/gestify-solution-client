@@ -84,8 +84,20 @@ export interface ImageFile {
     createdAt: string;
 }
 
+export interface PageInfo {
+    size: number;
+    number: number;
+    totalElements: number;
+    totalPages: number;
+}
+
+export interface PageGetProductsPaginatedResponse {
+    content: Product[];
+    page: PageInfo;
+}
+
 // Shortcut específico
-export type ProductPage = PageResponse<Product>;
+export type ProductPage = PageGetProductsPaginatedResponse;
 
 /*export interface Product {
     sallerId: string; // ID del vendedor asociado al producto
