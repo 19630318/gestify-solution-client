@@ -2,47 +2,67 @@
     <nav aria-label="Page navigation example">
         <ul class="inline-flex -space-x-px text-sm">
 
-            <!-- Previous -->
+        <!-- Previous -->
+        <li>
+            <button
+            (click)="changePage(currentPage - 1)"
+            [disabled]="currentPage === 1"
+            class="
+                flex items-center justify-center ms-0 leading-tight
+                text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg
+                hover:bg-gray-100
+                disabled:opacity-50 disabled:cursor-not-allowed
+                dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600
+                dark:hover:bg-gray-600
+            "
+            [ngClass]="{
+                'px-3 h-8': sizeComponent === 'small',
+                'px-4 h-10': sizeComponent === 'large'
+            }"
+            >
+            Previous
+            </button>
+        </li>
+
+        <!-- Pages -->
+        @for (page of getPages(); track page) {
             <li>
             <button
-                (click)="changePage(currentPage - 1)"
-                [disabled]="currentPage === 1"
-                class="flex items-center justify-center ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100"
-                [ngClass]="{'px-3 h-8': sizeComponent === 'small', 'px-4 h-10': sizeComponent === 'large'}"
-            >
-                Previous
-            </button>
-            </li>
-
-            <!-- Pages -->
-            @for (page of getPages(); track page) {
-            <li>
-                <button
                 (click)="changePage(page)"
                 [ngClass]="[
-                    'flex items-center justify-center border',
-                    page === currentPage
-                    ? 'text-blue-600 bg-blue-50 border-gray-300'
-                    : 'text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 border-gray-300',
-                    sizeComponent === 'small' ? 'px-3 h-8' : 'px-4 h-10'
+                'flex items-center justify-center border transition-colors',
+                page === currentPage
+                    ? 'text-blue-600 bg-blue-50 border-blue-300 dark:text-white dark:bg-blue-600 dark:border-blue-500'
+                    : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white',
+                sizeComponent === 'small' ? 'px-3 h-8' : 'px-4 h-10'
                 ]"
-                >
-                {{ page }}
-                </button>
-            </li>
-            }
-
-            <!-- Next -->
-            <li>
-            <button
-                (click)="changePage(currentPage + 1)"
-                [disabled]="currentPage === totalPages"
-                class="flex items-center justify-center leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100"
-                [ngClass]="{'px-3 h-8': sizeComponent === 'small', 'px-4 h-10': sizeComponent === 'large'}"
             >
-                Next
+                {{ page }}
             </button>
             </li>
+        }
+
+        <!-- Next -->
+        <li>
+            <button
+            (click)="changePage(currentPage + 1)"
+            [disabled]="currentPage === totalPages"
+            class="
+                flex items-center justify-center leading-tight
+                text-gray-500 bg-white border border-gray-300 rounded-e-lg
+                hover:bg-gray-100
+                disabled:opacity-50 disabled:cursor-not-allowed
+                dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600
+                dark:hover:bg-gray-600
+            "
+            [ngClass]="{
+                'px-3 h-8': sizeComponent === 'small',
+                'px-4 h-10': sizeComponent === 'large'
+            }"
+            >
+            Next
+            </button>
+        </li>
 
         </ul>
     </nav>
