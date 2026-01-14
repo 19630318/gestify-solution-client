@@ -1,5 +1,5 @@
 import { Component, inject, Input, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { TranslocoModule } from '@jsverse/transloco';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CategoryApiService } from '@core/services/category-api/category-api.service';
@@ -7,10 +7,9 @@ import { CategoryApiService } from '@core/services/category-api/category-api.ser
 @Component({
   selector: 'app-shearching-bar',
   imports: [
-    CommonModule,
     TranslocoModule,
-    OverlayModule,
-  ],
+    OverlayModule
+],
   templateUrl: './shearching-bar.component.html',
   styleUrl: './shearching-bar.component.css'
 })

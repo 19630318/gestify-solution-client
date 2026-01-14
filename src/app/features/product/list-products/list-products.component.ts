@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { MockProductService } from '@core/utils/fake-service/products-fake.service';
 import { Product } from '@core/interfaces/product/product';
@@ -15,13 +15,12 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-list-products',
   imports: [
-    CommonModule,
     TranslocoModule,
     ProductComponent,
     PaginationComponent,
     ProductPlaceholderComponent,
     ShearchingBarComponent
-  ],
+],
   templateUrl: './list-products.component.html',
   styleUrl: './list-products.component.css'
 })
