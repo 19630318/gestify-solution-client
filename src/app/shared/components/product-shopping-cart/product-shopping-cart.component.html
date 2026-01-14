@@ -18,7 +18,19 @@
                 <p class="text-black dark:text-white">1</p>
         
                 <div class="flex">
-                <button type="button" class="font-medium text-red-500 dark:text-red-700">{{ 'products.REMOVE' | transloco }}</button>
+                <button
+                    type="button"
+                    class="
+                        flex items-center gap-2 px-4 py-2 rounded-lg font-medium
+                        text-red-600 bg-red-50
+                        hover:bg-red-100
+                        dark:text-red-400 dark:bg-red-900/30
+                        dark:hover:bg-red-900/50
+                    "
+                    >
+                    <mat-icon class="text-base">delete</mat-icon>
+                    {{ 'products.REMOVE' | transloco }}
+                </button>
                 </div>
             </div>
         </div>
