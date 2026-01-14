@@ -14,6 +14,7 @@ import { ViewbeforeRecommendationsProductsComponent } from '@componentsShared/vi
 import { CookieServiceService } from '@core/services/cookie/cookie-service.service';
 import { toLightweightProduct } from '@core/utils/helper';
 import { ProductsApiService } from '@core/services/products-api/products-api.service';
+import { PinchZoomComponent } from '@meddv/ngx-pinch-zoom';
 
 @Component({
   selector: 'app-view-one-product',
@@ -24,7 +25,8 @@ import { ProductsApiService } from '@core/services/products-api/products-api.ser
     RatingComponent,
     ProductOnePlaceholderViewComponent,
     SharedModule,
-    ViewbeforeRecommendationsProductsComponent
+    ViewbeforeRecommendationsProductsComponent,
+    PinchZoomComponent
   ],
   templateUrl: './view-one-product.component.html',
   styleUrl: './view-one-product.component.css',

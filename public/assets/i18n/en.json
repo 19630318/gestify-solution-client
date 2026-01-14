@@ -142,7 +142,11 @@
         "REVIEW_EXISTS": "This review already exists",
         "REVIEW_NOT_FOUND": "This review does not exist",
         "REVIEW_USER_EXISTS": "A review for this product already exists from this user",
-        "REVIEW_USER_NOT_FOUND": "There is no review for this product from this user"
+        "REVIEW_USER_NOT_FOUND": "There is no review for this product from this user",
+        "BUSINESS_EXISTS": "This business already exists",
+        "BUSINESS_NOT_FOUND": "This business does not exist",
+        "BUSINESS_CATEGORIES_NOT_FOUND": "This business does not have categories",
+        "ERROR_LOADING_BUSINESS": "Error loading business"
     },
     "profile": {
         "PROFILE": "Profile",

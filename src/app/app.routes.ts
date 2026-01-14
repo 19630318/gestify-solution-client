@@ -6,11 +6,11 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'business',
+                redirectTo: 'app',
                 pathMatch: 'full'
             },
             {
-                path: 'business',
+                path: 'app',
                 children: [
                     {
                         path: '',

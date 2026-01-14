@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { BusinessPage } from '@core/interfaces/business/business';
+import { Business, BusinessPage } from '@core/interfaces/business/business';
+import { ProductPage } from '@core/interfaces/product/product';
 import { environment } from '@env/environment';
 import { of, tap } from 'rxjs';
 
@@ -31,6 +32,18 @@ export class BusinessApiService {
           [key]: res
         }));
       })
+    );
+  }
+
+  getBusinessByUuid(uuid: string) {
+    return this.http.get<Business>(
+      `${environment.apiUrl}/businesses/${uuid}`
+    );
+  }
+
+  getProductsByBusinessUuid(uuid: string, page: number = 0, size: number = 8) {
+    return this.http.get<ProductPage>(
+      `${environment.apiUrl}/businesses/${uuid}/products?page=${page}&size=${size}`
     );
   }
 

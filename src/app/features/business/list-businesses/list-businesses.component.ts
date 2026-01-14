@@ -49,8 +49,8 @@ export class ListBusinessesComponent {
         this.businessesList.set(res.content);
         this.settings.set({
           sizeComponent: 'small',
-          totalPages: res.totalPages,
-          currentPage: res.number,
+          totalPages: res.page.totalPages,
+          currentPage: res.page.number + 1,
         });
       },
       error: (err) => {
