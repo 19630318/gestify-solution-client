@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ShearchingBarComponent } from '@componentsShared/shearching-bar/shearching-bar.component';
@@ -13,14 +13,13 @@ import { ProductPlaceholderComponent } from '@componentsShared/product-placehold
 @Component({
   selector: 'app-list-businesses',
   imports: [
-    CommonModule,
     TranslocoModule,
     OverlayModule,
     ShearchingBarComponent,
     BusinessComponent,
     PaginationComponent,
-    ProductPlaceholderComponent,
-  ],
+    ProductPlaceholderComponent
+],
   templateUrl: './list-businesses.component.html',
   styleUrl: './list-businesses.component.css'
 })
