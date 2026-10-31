@@ -1,5 +1,5 @@
 import { IMAGE_CONFIG, IMAGE_LOADER, isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { Component, Inject, inject, makeStateKey, PLATFORM_ID, signal, StateKey, TransferState } from '@angular/core';
+import { Component, Inject, inject, makeStateKey, PLATFORM_ID, signal, StateKey, TransferState, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BreadcrumbComponent } from '@componentsShared/breadcrumb/breadcrumb.component';
@@ -30,6 +30,7 @@ import { PinchZoomComponent } from '@meddv/ngx-pinch-zoom';
   ],
   templateUrl: './view-one-product.component.html',
   styleUrl: './view-one-product.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [
     {
       provide: IMAGE_CONFIG,

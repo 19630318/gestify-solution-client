@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { AlertService } from '@core/services/alerts/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Business } from '@core/interfaces/business/business';
@@ -20,6 +20,7 @@ import { BusinessHomePlaceholderComponent } from '@componentsShared/business-hom
     BusinessHomePlaceholderComponent
   ],
   templateUrl: './view-one-business.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './view-one-business.component.css'
 })
 export class ViewOneBusinessComponent {

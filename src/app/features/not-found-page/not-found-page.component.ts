@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TranslocoModule } from '@jsverse/transloco';
 import { RouterLink } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ],
   templateUrl: './not-found-page.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './not-found-page.component.css'
 })
 export class NotFoundPageComponent {

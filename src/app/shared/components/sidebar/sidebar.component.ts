@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, HostListener, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { AsideComponent } from '../aside/aside.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { TranslocoService } from '@jsverse/transloco';
@@ -28,6 +28,7 @@ import { Logo } from '@core/interfaces/core/logo';
     AsideShoppingCartComponent
   ],
   templateUrl: './sidebar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -21,6 +21,7 @@ import { ProductPlaceholderComponent } from '@componentsShared/product-placehold
     ProductPlaceholderComponent
 ],
   templateUrl: './list-businesses.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './list-businesses.component.css'
 })
 export class ListBusinessesComponent {

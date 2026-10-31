@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '@core/interfaces/product/product';
 import { TypeFile } from '@core/interfaces/file/file';
@@ -13,6 +13,7 @@ import { TranslocoModule } from '@jsverse/transloco';
     TranslocoModule
   ],
   templateUrl: './aside-shopping-cart.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './aside-shopping-cart.component.css'
 })
 export class AsideShoppingCartComponent {

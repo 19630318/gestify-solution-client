@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoModule } from '@jsverse/transloco';
 
@@ -9,6 +9,7 @@ import { TranslocoModule } from '@jsverse/transloco';
     TranslocoModule
   ],
   templateUrl: './rating.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './rating.component.css'
 })
 export class RatingComponent {
