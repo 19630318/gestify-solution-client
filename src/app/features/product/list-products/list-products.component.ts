@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { MockProductService } from '@core/utils/fake-service/products-fake.service';
@@ -22,6 +22,7 @@ import { ActivatedRoute } from '@angular/router';
     ShearchingBarComponent
 ],
   templateUrl: './list-products.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './list-products.component.css'
 })
 export class ListProductsComponent {

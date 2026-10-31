@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CookieServiceService } from '@core/services/cookie/cookie-service.service';
 import { productsListFake } from './products-fake';
 import { RouterLink } from '@angular/router';
@@ -14,6 +14,7 @@ import { toLightweightProduct } from '@core/utils/helper';
     TranslocoModule
   ],
   templateUrl: './viewbefore-recommendations-products.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './viewbefore-recommendations-products.component.css'
 })
 export class ViewbeforeRecommendationsProductsComponent {

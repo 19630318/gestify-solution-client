@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Business } from '@core/interfaces/business/business';
 import { RouterLink } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { TranslocoModule } from '@jsverse/transloco';
     TranslocoModule
 ],
   templateUrl: './business.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './business.component.css'
 })
 export class BusinessComponent {

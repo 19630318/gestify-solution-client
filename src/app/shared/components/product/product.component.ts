@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '@core/interfaces/product/product';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { RatingComponent } from '@componentsShared/rating/rating.component';
     RatingComponent
   ],
   templateUrl: './product.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './product.component.css'
 })
 export class ProductComponent {

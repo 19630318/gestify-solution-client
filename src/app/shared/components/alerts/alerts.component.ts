@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertService } from '@core/services/alerts/alert.service';
 
@@ -8,6 +8,7 @@ import { AlertService } from '@core/services/alerts/alert.service';
     CommonModule
   ],
   templateUrl: './alerts.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './alerts.component.css'
 })
 export class AlertsComponent {

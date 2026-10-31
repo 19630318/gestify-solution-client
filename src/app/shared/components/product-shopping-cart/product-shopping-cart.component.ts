@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '@core/interfaces/product/product';
 import { CommonModule } from '@angular/common';
 import { TranslocoModule } from '@jsverse/transloco';
@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule
   ],
   templateUrl: './product-shopping-cart.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './product-shopping-cart.component.css'
 })
 export class ProductShoppingCartComponent {

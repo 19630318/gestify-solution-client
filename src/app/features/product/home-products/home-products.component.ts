@@ -17,6 +17,7 @@ interface imagesCarousel {
     TranslocoModule
   ],
   templateUrl: './home-products.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home-products.component.css',
   //changeDetection: ChangeDetectionStrategy.OnPush
 })

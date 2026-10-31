@@ -1,4 +1,4 @@
-import { Component, inject, Input, PLATFORM_ID, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, PLATFORM_ID, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { IChildItem, IMenuItem } from '@core/interfaces/aside/aside';
 import { MenuItemType } from '@core/interfaces/aside/aside';
 import { Router, RouterModule } from '@angular/router';
@@ -11,6 +11,7 @@ import { CategoryApiService } from '@core/services/category-api/category-api.ser
   selector: 'app-aside',
   imports: [RouterModule, MatIconModule, CommonModule, TranslocoModule],
   templateUrl: './aside.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './aside.component.css'
 })
 export class AsideComponent {

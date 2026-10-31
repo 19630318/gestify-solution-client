@@ -1,4 +1,4 @@
-import { Component, inject, Input, signal } from '@angular/core';
+import { Component, inject, Input, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { TranslocoModule } from '@jsverse/transloco';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -11,6 +11,7 @@ import { CategoryApiService } from '@core/services/category-api/category-api.ser
     OverlayModule
 ],
   templateUrl: './shearching-bar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './shearching-bar.component.css'
 })
 export class ShearchingBarComponent {
